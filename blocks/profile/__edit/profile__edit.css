@@ -1,0 +1,11 @@
+.profile__edit {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+}
+
+@media (max-width: 720px) {
+  .profile__edit {
+    gap: 10px;
+  }
+}

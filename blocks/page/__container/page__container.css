@@ -1,11 +1,4 @@
-@media (max-width: 1024px) {
-  .page__container {
-    margin-left: clamp(19px, 12vw, 72px);
-    margin-right: clamp(19px, 12vw, 72px);
-  }
-}
-
-@media (max-width: 320px) {
+@media (max-width: 960px) {
   .page__container {
     margin-left: 19px;
     margin-right: 19px;
