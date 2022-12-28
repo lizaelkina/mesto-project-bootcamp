@@ -9,61 +9,67 @@
 </head>
 <body class="root">
 <div class="page">
-  <header class="header header__container">
+  <header class="header page__header">
     <img class="logo" src="./images/logo.svg" alt="Логотип Mesto Russia">
   </header>
   <main class="content">
-    <section class="profile profile__container" aria-label="Профиль пользователя">
-      <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар профиля">
+    <section class="profile content__profile" aria-label="Профиль пользователя">
+      <img class="profile__avatar" src="./images/avatar.jpeg" alt="Аватар профиля">
       <div class="profile__info">
-        <h1 class="profile__title">Жак-Ив Кусто</h1>
+        <h1 class="profile__title">Лиза Петкова</h1>
         <button class="profile__btn-edit hover hover_button_basic"></button>
-        <p class="profile__subtitle">Исследователь океана</p>
+        <p class="profile__subtitle">Путешественник</p>
       </div>
       <button class="profile__btn-add hover hover_button_basic"></button>
     </section>
-<!--    <section class="gallery gallery__container">-->
-<!--      <ul class="gallery__elements">-->
-<!--        <li class="gallery__element">-->
-<!--          <figure class="gallery__item">-->
-<!--            <img class="gallery__photo" src="./images/1.jpg" alt="">-->
-<!--            <figcaption class="gallery__caption">Подпись 1</figcaption>-->
-<!--          </figure>-->
-<!--        </li>-->
-<!--        <li class="gallery__element">-->
-<!--          <figure class="gallery__item">-->
-<!--            <img class="gallery__photo" src="./images/2.jpg" alt="">-->
-<!--            <figcaption class="gallery__caption">Подпись 2</figcaption>-->
-<!--          </figure>-->
-<!--        </li>-->
-<!--        <li class="gallery__element">-->
-<!--          <figure class="gallery__item">-->
-<!--            <img class="gallery__photo" src="./images/3.jpg" alt="">-->
-<!--            <figcaption class="gallery__caption">Подпись 3</figcaption>-->
-<!--          </figure>-->
-<!--        </li>-->
-<!--        <li class="gallery__element">-->
-<!--          <figure class="gallery__item">-->
-<!--            <img class="gallery__photo" src="./images/1.jpg" alt="">-->
-<!--            <figcaption class="gallery__caption">Подпись 4</figcaption>-->
-<!--          </figure>-->
-<!--        </li>-->
-<!--        <li class="gallery__element">-->
-<!--          <figure class="gallery__item">-->
-<!--            <img class="gallery__photo" src="./images/2.jpg" alt="">-->
-<!--            <figcaption class="gallery__caption">Подпись 5</figcaption>-->
-<!--          </figure>-->
-<!--        </li>-->
-<!--        <li class="gallery__element">-->
-<!--          <figure class="gallery__item">-->
-<!--            <img class="gallery__photo" src="./images/3.jpg" alt="">-->
-<!--            <figcaption class="gallery__caption">Подпись 6</figcaption>-->
-<!--          </figure>-->
-<!--        </li>-->
-<!--      </ul>-->
-<!--    </section>-->
+    <section class="gallery content__gallery" aria-label="Галерея фотографий пользователя">
+      <ul class="gallery__cards">
+        <li class="gallery__card">
+          <img class="gallery__photo" src="./images/spb.jpeg" alt="Большеохтинский разводной мост">
+          <div class="gallery__caption">
+            <span class="gallery__text">Санкт-Петербург</span>
+            <button class="gallery__like gallery__like_active hover hover_button_basic"></button>
+          </div>
+        </li>
+        <li class="gallery__card">
+          <img class="gallery__photo" src="./images/moscow.jpeg" alt="МГУ имени М.В.Ломоносова">
+          <div class="gallery__caption">
+            <span class="gallery__text">Москва</span>
+            <button class="gallery__like hover hover_button_basic"></button>
+          </div>
+        </li>
+        <li class="gallery__card">
+          <img class="gallery__photo" src="./images/kazan.jpeg" alt="Мечеть «Кул-Шариф»">
+          <div class="gallery__caption">
+            <span class="gallery__text">Казань</span>
+            <button class="gallery__like hover hover_button_basic"></button>
+          </div>
+        </li>
+        <li class="gallery__card">
+          <img class="gallery__photo" src="./images/vyborg.jpeg" alt="Выборгская крепость">
+          <div class="gallery__caption">
+            <span class="gallery__text">Выборг</span>
+            <button class="gallery__like hover hover_button_basic"></button>
+          </div>
+        </li>
+        <li class="gallery__card">
+          <img class="gallery__photo" src="./images/pskov.jpeg" alt="Храм Покрова и Рождества от Пролома">
+          <div class="gallery__caption">
+            <span class="gallery__text">Псков</span>
+            <button class="gallery__like hover hover_button_basic"></button>
+          </div>
+        </li>
+        <li class="gallery__card">
+          <img class="gallery__photo" src="./images/korela.jpeg" alt="Крепость «Корела»">
+          <div class="gallery__caption">
+            <span class="gallery__text">Приозёрск</span>
+            <button class="gallery__like hover hover_button_basic"></button>
+          </div>
+        </li>
+      </ul>
+    </section>
   </main>
-  <footer class="footer footer__container">
+  <footer class="footer page__footer">
     <span>&copy; 2022 Mesto Russia</span>
   </footer>
 </div>

@@ -1,9 +1,9 @@
-.profile__container {
+.content__profile {
   margin-bottom: 50px;
 }
 
 @media (max-width: 720px) {
-  .profile__container {
+  .content__profile {
     margin-bottom: 36px;
   }
 }

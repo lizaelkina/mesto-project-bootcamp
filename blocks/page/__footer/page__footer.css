@@ -1,16 +1,16 @@
-.footer__container {
+.page__footer {
   margin-bottom: 60px;
 }
 
 @media (max-width: 960px) {
-  .footer__container {
+  .page__footer {
     margin-left: 19px;
     margin-right: 19px;
   }
 }
 
 @media (max-width: 320px) {
-  .footer__container {
+  .page__footer {
     margin-bottom: 36px;
   }
 }

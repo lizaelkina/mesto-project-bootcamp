@@ -1,0 +1,9 @@
+.content__gallery {
+  margin-bottom: 66px;
+}
+
+@media (max-width: 320px) {
+  .content__gallery {
+    margin-bottom: 48px;
+  }
+}
