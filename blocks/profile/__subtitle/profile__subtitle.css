@@ -11,25 +11,20 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/*@media (max-width: 960px) {*/
-/*  .profile__subtitle {*/
-/*    max-width: clamp(272px, 54vw, 512px);*/
-/*    font-size: clamp(14px, 5vw, 18px);*/
-/*    line-height: clamp(17px, 5.5vw, 22px);*/
-/*  }*/
-/*}*/
-
-/*@media (max-width: 720px) {*/
-/*  .profile__subtitle {*/
-/*    max-width: clamp(262px, 54vw, 642px);*/
-/*  }*/
-/*}*/
-
-@media (max-width: 320px) {
+@media (max-width: 720px) {
   .profile__subtitle {
-    max-width: 262px;
+    text-align: center;
+    font-size: clamp(14px, 4vw, 18px);
+    line-height: clamp(17px, 4.5vw, 22px);
+  }
+}
+
+@media (max-width: 540px) {
+  .profile__subtitle {
     font-size: 14px;
     line-height: 17px;
   }

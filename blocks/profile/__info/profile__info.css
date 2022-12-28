@@ -1,12 +1,11 @@
 .profile__info {
-  margin-right: auto;
-  max-width: 336px;
-  width: 100%;
-  display: grid;
+  flex-grow: 1;
   align-items: baseline;
+  display: grid;
+  grid-template-columns: fit-content(294px) minmax(18px, 24px);
   grid-template-areas:
-  "profile__title profile__btn-edit"
-  "profile__subtitle profile__subtitle";
+    "profile__title profile__btn-edit ."
+    "profile__subtitle profile__subtitle .";
   column-gap: 18px;
   row-gap: 16px;
 }
@@ -15,6 +14,11 @@
   .profile__info {
     column-gap: 10px;
     row-gap: 14px;
-    align-items: center;
+  }
+}
+
+@media (max-width: 540px) {
+  .profile__info {
+    grid-template-columns: fit-content(189px) 18px;
   }
 }

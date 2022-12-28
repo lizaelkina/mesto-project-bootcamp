@@ -11,18 +11,20 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/*@media (max-width: 960px) {*/
-/*  .profile__title {*/
-/*    font-size: clamp(27px, 5vw, 42px);*/
-/*    line-height: clamp(33px, 5.5vw, 48px);*/
-/*  }*/
-/*}*/
-
-@media (max-width: 320px) {
+@media (max-width: 720px) {
   .profile__title {
-    max-width: 210px;
+    text-align: center;
+    font-size: clamp(27px, 8vw, 42px);
+    line-height: clamp(33px, 8.5vw, 48px);
+  }
+}
+
+@media (max-width: 540px) {
+  .profile__title {
     font-size: 27px;
     line-height: 33px;
   }
