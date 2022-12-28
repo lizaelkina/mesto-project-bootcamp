@@ -1,0 +1,18 @@
+.footer {
+  margin: 0;
+  padding: 0;
+  max-width: 508px;
+  font-family: var(--font-family);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: var(--text-footer);
+}
+
+@media (max-width: 320px) {
+  .footer {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}

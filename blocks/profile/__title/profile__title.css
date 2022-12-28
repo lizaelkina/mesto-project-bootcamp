@@ -1,6 +1,7 @@
 .profile__title {
   margin: 0;
   padding: 0;
+  max-width: 508px;
   font-family: var(--font-family);
   font-style: normal;
   font-weight: 500;
@@ -12,15 +13,23 @@
   white-space: nowrap;
 }
 
-@media (max-width: 960px) {
-  .profile__title {
-    font-size: clamp(27px, 5vw, 42px);
-    line-height: clamp(33px, 5.5vw, 48px);
-  }
-}
+/*@media (max-width: 960px) {*/
+/*  .profile__title {*/
+/*    max-width: clamp(235px, 54vw, 470px);*/
+/*    font-size: clamp(27px, 5vw, 42px);*/
+/*    line-height: clamp(33px, 5.5vw, 48px);*/
+/*  }*/
+/*}*/
 
-@media (max-width: 720px) {
+/*@media (max-width: 720px) {*/
+/*  .profile__title {*/
+/*    max-width: clamp(210px, 54vw, 560px);*/
+/*  }*/
+/*}*/
+
+@media (max-width: 320px) {
   .profile__title {
+    max-width: 210px;
     font-size: 27px;
     line-height: 33px;
   }
