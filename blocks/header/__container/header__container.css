@@ -1,9 +1,9 @@
-.page__header {
+.header__container {
   margin: 45px 0 40px;
 }
 
 @media (max-width: 320px) {
-  .page__header {
+  .header__container {
     margin: 28px 0 42px;
   }
 }

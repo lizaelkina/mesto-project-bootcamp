@@ -2,6 +2,13 @@
   margin-bottom: 60px;
 }
 
+@media (max-width: 960px) {
+  .footer__container {
+    margin-left: 19px;
+    margin-right: 19px;
+  }
+}
+
 @media (max-width: 320px) {
   .footer__container {
     margin-bottom: 36px;

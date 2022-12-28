@@ -1,9 +1,10 @@
 .profile__btn-add {
   padding: 0;
-  height: 50px;
+  max-width: 150px;
+  width: 100%;
   aspect-ratio: 3;
   box-sizing: border-box;
-  border: 2px solid #fff;
+  border: 2px solid var(--text-color);
   border-radius: 2px;
   background-color: #000;
   background-image: url(../../../images/plus.svg);
@@ -14,7 +15,6 @@
 
 @media (max-width: 720px) {
   .profile__btn-add {
-    width: 100%;
     background-size: 16px 16px;
   }
 }

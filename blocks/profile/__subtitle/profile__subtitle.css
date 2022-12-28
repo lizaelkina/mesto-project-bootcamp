@@ -1,12 +1,12 @@
 .profile__subtitle {
+  grid-area: profile__subtitle;
   margin: 0;
   padding: 0;
-  max-width: 550px;
   font-family: var(--font-family);
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
-  line-height: 1.22;
+  line-height: 22px;
   color: var(--text-color);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -31,6 +31,6 @@
   .profile__subtitle {
     max-width: 262px;
     font-size: 14px;
-    line-height: 1.21;
+    line-height: 17px;
   }
 }
