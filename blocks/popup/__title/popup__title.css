@@ -1,0 +1,27 @@
+.popup__title {
+  margin: 0 0 48px;
+  padding: 0;
+  font-family: var(--font-family);
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  color: var(--text-element);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (max-width: 720px) {
+  .popup__title {
+    font-size: clamp(18px, 3vw, 24px);
+    line-height: clamp(22px, 3.5vw, 29px);
+  }
+}
+
+@media (max-width: 320px) {
+  .popup__title {
+    margin-bottom: 75px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
