@@ -10,7 +10,7 @@
 @import url(../blocks/content/__gallery/content__gallery.css);
 @import url(../blocks/hover/hover.css);
 @import url(../blocks/hover/_button/hover_button_basic.css);
-@import url(../blocks/hover/_button/hover_button_modal.css);
+@import url(../blocks/hover/_button/hover_button_form.css);
 @import url(../blocks/header/header.css);
 @import url(../blocks/logo/logo.css);
 @import url(../blocks/profile/profile.css);
