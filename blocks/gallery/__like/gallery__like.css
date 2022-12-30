@@ -1,10 +1,11 @@
 .gallery__like {
   padding: 0;
-  min-width: 22px;
-  min-height: 19px;
-  border: none;
-  background-image: url(../../../images/like.svg);
+  max-width: 22px;
+  width: 100%;
+  aspect-ratio: 22 / 19;
+  border: 0;
   background-color: transparent;
+  background-image: url(../../../images/like.svg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
