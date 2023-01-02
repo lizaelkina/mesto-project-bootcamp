@@ -9,7 +9,7 @@
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 540px) {
   .page__footer {
     margin-bottom: 36px;
   }

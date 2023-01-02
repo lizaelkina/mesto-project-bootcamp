@@ -5,7 +5,7 @@
   display: block;
 }
 
-@media (max-width: 320px) {
+@media (max-width: 540px) {
   .logo {
     width: 103.74px;
     height: 24.4px;

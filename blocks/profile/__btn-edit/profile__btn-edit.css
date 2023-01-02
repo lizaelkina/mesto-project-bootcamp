@@ -16,6 +16,5 @@
 @media (max-width: 540px) {
   .profile__btn-edit {
     max-width: 18px;
-    justify-self: start;
   }
 }

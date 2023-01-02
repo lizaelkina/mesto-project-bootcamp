@@ -31,7 +31,7 @@
 }
 
 
-@media (max-width: 320px) {
+@media (max-width: 540px) {
   .popup__btn-save {
     max-width: 238px;
     min-height: 46px;

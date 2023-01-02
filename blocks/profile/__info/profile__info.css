@@ -2,23 +2,26 @@
   flex-grow: 1;
   align-items: baseline;
   display: grid;
-  grid-template-columns: fit-content(294px) minmax(18px, 24px);
+  grid-template-columns: fit-content(294px) 24px;
   grid-template-areas:
-    "profile__title profile__btn-edit ."
-    "profile__subtitle profile__subtitle .";
+    "profile__title profile__btn-edit"
+    "profile__subtitle profile__subtitle";
   column-gap: 18px;
-  row-gap: 16px;
+  row-gap: 7px; /* 16px в дизайне указывается без учета нижних выносных букв */
 }
 
 @media (max-width: 720px) {
   .profile__info {
+    grid-template-columns: 15px fit-content(294px) minmax(18px, 24px);
+    grid-template-areas:
+      ". profile__title profile__btn-edit"
+      "profile__subtitle profile__subtitle profile__subtitle";
     column-gap: 10px;
-    row-gap: 14px;
   }
 }
 
 @media (max-width: 540px) {
   .profile__info {
-    grid-template-columns: fit-content(189px) 18px;
+    grid-template-columns: 15px fit-content(189px) 18px;
   }
 }

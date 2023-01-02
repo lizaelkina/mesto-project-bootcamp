@@ -14,8 +14,9 @@
   background-repeat: no-repeat;
 }
 
-@media (max-width: 540px) {
+@media (max-width: 720px) {
   .popup__btn-close {
+    top: -37px;
     right: 0;
     max-width: 20px;
     background-size: 20px 20px;
