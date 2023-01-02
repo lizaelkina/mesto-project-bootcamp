@@ -1,5 +1,6 @@
 .profile__btn-edit {
   grid-area: profile__btn-edit;
+  margin-top: 15px;
   padding: 0;
   max-width: 24px;
   width: 100%;
@@ -15,6 +16,7 @@
 
 @media (max-width: 540px) {
   .profile__btn-edit {
+    margin-top: 10px;
     max-width: 18px;
   }
 }
