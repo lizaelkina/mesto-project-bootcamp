@@ -2,7 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   border: 0;
-  padding: 0 0 13px;
+  padding: 0 0 9px; /* 13px в дизайне указывается без учета нижних выносных букв */
   border-bottom: 1px solid rgba(0, 0, 0, .2);
   background-color: transparent;
   width: 100%;
