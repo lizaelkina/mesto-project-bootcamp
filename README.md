@@ -11,4 +11,4 @@
 - HTML5
 - CCS3
 
-## GitHub Pages [Ссылка](#)
+## GitHub Pages [Ссылка](https://lizapetkova.github.io/mesto-project-bootcamp/)
