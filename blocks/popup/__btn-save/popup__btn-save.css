@@ -19,8 +19,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.popup__btn-save:focus {
-  outline-color: rgba(0, 0, 0, .2);
+.popup__btn-save_disabled {
+  opacity: .3;
+  cursor: default;
 }
 
 @media (max-width: 720px) {
