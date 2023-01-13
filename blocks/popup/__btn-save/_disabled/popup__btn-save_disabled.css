@@ -1,4 +1,7 @@
 .popup__btn-save_disabled {
-  opacity: .3;
+  border: 1px solid rgba(0, 0, 0, 1);
+  background-color: var(--background-element);
+  color: var(--text-element);
   cursor: default;
+  opacity: .2;
 }
