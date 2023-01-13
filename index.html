@@ -27,6 +27,8 @@
       <ul class="gallery__cards">
         <li class="gallery__card">
           <img class="gallery__photo" src="./images/spb.jpeg" alt="Большеохтинский разводной мост">
+          <button class="gallery__delete hover hover_button_basic" type="button"
+                  aria-label="Удалить изображение"></button>
           <div class="gallery__caption">
             <h2 class="gallery__text">Санкт-Петербург</h2>
             <button class="gallery__like gallery__like_active hover hover_button_like" type="button"
@@ -35,6 +37,8 @@
         </li>
         <li class="gallery__card">
           <img class="gallery__photo" src="./images/moscow.jpeg" alt="МГУ имени М.В.Ломоносова">
+          <button class="gallery__delete hover hover_button_basic" type="button"
+                  aria-label="Удалить изображение"></button>
           <div class="gallery__caption">
             <h2 class="gallery__text">Москва</h2>
             <button class="gallery__like hover hover_button_like" type="button" aria-label="Поставить like"></button>
@@ -42,6 +46,8 @@
         </li>
         <li class="gallery__card">
           <img class="gallery__photo" src="./images/kazan.jpeg" alt="Мечеть «Кул-Шариф»">
+          <button class="gallery__delete hover hover_button_basic" type="button"
+                  aria-label="Удалить изображение"></button>
           <div class="gallery__caption">
             <h2 class="gallery__text">Казань</h2>
             <button class="gallery__like hover hover_button_like" type="button" aria-label="Поставить like"></button>
@@ -49,6 +55,8 @@
         </li>
         <li class="gallery__card">
           <img class="gallery__photo" src="./images/vyborg.jpeg" alt="Выборгская крепость">
+          <button class="gallery__delete hover hover_button_basic" type="button"
+                  aria-label="Удалить изображение"></button>
           <div class="gallery__caption">
             <h2 class="gallery__text">Выборг</h2>
             <button class="gallery__like hover hover_button_like" type="button" aria-label="Поставить like"></button>
@@ -56,6 +64,8 @@
         </li>
         <li class="gallery__card">
           <img class="gallery__photo" src="./images/pskov.jpeg" alt="Храм Покрова и Рождества от Пролома">
+          <button class="gallery__delete hover hover_button_basic" type="button"
+                  aria-label="Удалить изображение"></button>
           <div class="gallery__caption">
             <h2 class="gallery__text">Псков</h2>
             <button class="gallery__like hover hover_button_like" type="button" aria-label="Поставить like"></button>
@@ -63,6 +73,8 @@
         </li>
         <li class="gallery__card">
           <img class="gallery__photo" src="./images/korela.jpeg" alt="Крепость «Корела»">
+          <button class="gallery__delete hover hover_button_basic" type="button"
+                  aria-label="Удалить изображение"></button>
           <div class="gallery__caption">
             <h2 class="gallery__text">Приозёрск</h2>
             <button class="gallery__like hover hover_button_like" type="button" aria-label="Поставить like"></button>
@@ -72,15 +84,28 @@
     </section>
   </main>
   <footer class="footer page__footer">&copy; 2023 Mesto Russia</footer>
-  <div class="popup">
+  <div class="popup popup_edit-profile">
     <div class="popup__container">
       <button class="popup__btn-close hover hover_button_basic"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form" name="profile">
+      <form class="popup__form" name="edit-profile">
         <input class="popup__item" type="text" id="profile-name" name="profile-name"
                placeholder="Введите имя профиля" value="Лиза Петкова" required>
         <input class="popup__item" type="text" id="profile-description" name="profile-description"
                placeholder="Введите описание профиля" value="Путешественник" required>
+        <button class="popup__btn-save hover hover_button_save" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
+  <div class="popup popup_add-photo">
+    <div class="popup__container">
+      <button class="popup__btn-close hover hover_button_basic"></button>
+      <h2 class="popup__title">Новое место</h2>
+      <form class="popup__form" name="add-photo">
+        <input class="popup__item" type="text" id="photo-name" name="photo-name"
+               placeholder="Название" required>
+        <input class="popup__item" type="url" id="photo-url" name="photo-url"
+               placeholder="Ссылка на картинку" required>
         <button class="popup__btn-save hover hover_button_save" type="submit">Сохранить</button>
       </form>
     </div>
