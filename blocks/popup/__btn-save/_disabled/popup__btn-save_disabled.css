@@ -1,0 +1,4 @@
+.popup__btn-save_disabled {
+  opacity: .3;
+  cursor: default;
+}
