@@ -15,12 +15,12 @@
     grid-template-areas:
       ". profile__title profile__btn-edit"
       "profile__subtitle profile__subtitle profile__subtitle";
-    column-gap: 10px;
   }
 }
 
 @media (max-width: 540px) {
   .profile__info {
     grid-template-columns: 20px fit-content(189px) 18px;
+    column-gap: 10px;
   }
 }
