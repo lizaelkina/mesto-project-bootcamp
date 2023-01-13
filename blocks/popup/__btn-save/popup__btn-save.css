@@ -19,11 +19,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.popup__btn-save_disabled {
-  opacity: .3;
-  cursor: default;
-}
-
 @media (max-width: 720px) {
   .popup__btn-save {
     height: 46px;
