@@ -1,0 +1,10 @@
+.popup__viewer {
+  position: relative;
+}
+
+@media (max-width: 540px) {
+  .popup__viewer {
+    margin-left: 19px;
+    margin-right: 19px;
+  }
+}
