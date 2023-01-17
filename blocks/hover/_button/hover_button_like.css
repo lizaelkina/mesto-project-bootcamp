@@ -1,4 +1,5 @@
 .hover_button_like:hover {
   opacity: .5;
   transform: scale(1.2);
+  transition: transform .15s, background-image .15s linear;
 }

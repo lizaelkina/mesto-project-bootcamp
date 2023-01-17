@@ -9,4 +9,5 @@
   background-position: center;
   background-size: 22px 19px;
   background-repeat: no-repeat;
+  transition: background-image .15s linear;
 }
