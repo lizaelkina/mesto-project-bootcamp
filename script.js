@@ -3,123 +3,143 @@ const content = page.querySelector('.content');
 
 // открытие попапов
 
-const popup = page.querySelector('.popup');
-const editProfilePopup = page.querySelector('.popup_edit-profile');
-const addPhotoPopup = page.querySelector('.popup_add-photo');
-const viewPhotoPopup = page.querySelector('.popup_viewer-photo');
-
-const editProfileBtn = content.querySelector('.profile__btn-edit');
-const addPhotoBtn = content.querySelector('.profile__btn-add');
-const viewPhotoButtons = content.querySelectorAll('.gallery__photo');
-
-const closePopupButtons = page.querySelectorAll('.popup__btn-close');
-
-let initProfileName;
-let initProfileDesc;
-
 function openPopup(popup) {
   popup.classList.add('popup_opened');
 }
 
-editProfileBtn.addEventListener('click', function () {
-  openPopup(editProfilePopup);
-  initProfileName = profileNameInput.value;
-  initProfileDesc = profileDescInput.value;
-  checkIsActiveBtnSave();
-});
-
-addPhotoBtn.addEventListener('click', function () {
-  openPopup(addPhotoPopup);
-});
-
-for (let i = 0; i < viewPhotoButtons.length; i++) {
-  viewPhotoButtons[i].addEventListener('click', function () {
-    openPopup(viewPhotoPopup);
-  });
-}
-
 // закрытие попапов
 
-function closePopup(event) {
-  event.target.parentElement.parentElement.classList.remove('popup_opened');
+const closePopupButtons = page.querySelectorAll('.popup__btn-close');
+
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
 }
 
-for (let i = 0; i < closePopupButtons.length; i++) {
-  closePopupButtons[i].addEventListener('click', closePopup);
+closePopupButtons.forEach(button => {
+  button.addEventListener('click', event => {
+    const popup = event.target.closest('.popup');
+    closePopup(popup);
+  });
+})
+
+// редактирование профиля
+
+const editProfilePopup = page.querySelector('.popup_edit-profile');
+const editProfileButton = content.querySelector('.profile__btn-edit');
+const saveProfileForm = editProfilePopup.querySelector('.popup__form');
+const profileNameInput = saveProfileForm.querySelector('.popup__input_profile-name');
+const profileDescriptionInput = saveProfileForm.querySelector('.popup__input_profile-description');
+const profileNameElement = content.querySelector('.profile__title');
+const profileDescriptionElement = content.querySelector('.profile__subtitle');
+
+
+editProfileButton.addEventListener('click', () => {
+  profileNameInput.value = profileNameElement.textContent;
+  profileDescriptionInput.value = profileDescriptionElement.textContent;
+  openPopup(editProfilePopup);
+});
+
+function saveProfile(event) {
+  event.preventDefault();
+  const name = profileNameInput.value;
+  const description = profileDescriptionInput.value;
+  profileNameElement.textContent = name;
+  profileDescriptionElement.textContent = description;
+  closePopup(editProfilePopup);
 }
 
-// активность кнопки сохранить в попапе профиля
+saveProfileForm.addEventListener('submit', saveProfile);
 
-const popupBtnSave = popup.querySelector('.popup__btn-save');
-const profileNameInput = popup.querySelector('#profile-name');
-const profileDescInput = popup.querySelector('#profile-description');
+// добавление изображений
 
-function checkIsActiveBtnSave() {
-  const profileName = profileNameInput.value;
-  const profileDesc = profileDescInput.value;
-  const isActive = profileName.length > 0 && profileDesc.length > 0 && (profileName !== initProfileName || profileDesc !== initProfileDesc);
+const cardTemplate = document.querySelector('#card-item-template').content;
+const galleryCardsElement = content.querySelector('.gallery__cards');
 
-  if (isActive) {
-    popupBtnSave.removeAttribute('disabled');
-    popupBtnSave.classList.remove('popup__btn-save_disabled');
-    popupBtnSave.classList.add('hover');
-    popupBtnSave.classList.add('hover_button_save');
-  } else {
-    popupBtnSave.setAttribute('disabled', 'true');
-    popupBtnSave.classList.add('popup__btn-save_disabled');
-    popupBtnSave.classList.remove('hover');
-    popupBtnSave.classList.remove('hover_button_save');
+function addCard(cardData) {
+  const cardElement = cardTemplate.querySelector('.gallery__card').cloneNode(true);
+  const cardImage = cardElement.querySelector('.gallery__photo');
+  const cardTextElement = cardElement.querySelector('.gallery__text');
+  const likeButton = cardElement.querySelector('.gallery__like');
+  const deleteButton = cardElement.querySelector('.gallery__delete');
+  cardImage.src = cardData.link;
+  cardImage.setAttribute('alt', cardData.name);
+  cardTextElement.textContent = cardData.name;
+  galleryCardsElement.prepend(cardElement);
+
+  const viewPhotoPopup = page.querySelector('.popup_viewer-photo');
+  const viewPhotoImage = viewPhotoPopup.querySelector('.popup__photo');
+  const viewPhotoTitle = viewPhotoPopup.querySelector('.popup__caption');
+
+  cardImage.addEventListener('click', () => {
+    viewPhotoImage.src = cardData.link;
+    viewPhotoImage.setAttribute('alt', cardData.name);
+    viewPhotoTitle.textContent = cardData.name;
+    openPopup(viewPhotoPopup);
+  })
+
+  likeButton.addEventListener('click', () => {
+    likeButton.classList.toggle('gallery__like_active');
+  })
+
+  deleteButton.addEventListener('click', () => {
+    cardElement.remove();
+  })
+}
+
+const galleryCards = [
+  {
+    name: 'Санкт-Петербург',
+    link: './images/spb.jpeg'
+  },
+  {
+    name: 'Москва',
+    link: './images/moscow.jpeg'
+  },
+  {
+    name: 'Казань',
+    link: './images/kazan.jpeg'
+  },
+  {
+    name: 'Выборг',
+    link: './images/vyborg.jpeg'
+  },
+  {
+    name: 'Псков',
+    link: './images/pskov.jpeg'
+  },
+  {
+    name: 'Приозерск',
+    link: './images/korela.jpeg'
   }
-}
+];
 
-profileNameInput.addEventListener('keyup', checkIsActiveBtnSave);
-profileDescInput.addEventListener('keyup', checkIsActiveBtnSave);
+galleryCards.reverse().forEach(card => {
+  addCard(card);
+})
 
 // кнопка добавления изображений
 
-const profileBtnAdd = content.querySelector('.profile__btn-add');
-const galleryContainer = content.querySelector('.gallery__cards');
-const titleArrays = ['Балаково', 'Кандалакша', 'Иркутск'];
-const imgPathArrays = ['./images/kazan.jpeg', './images/moscow.jpeg', './images/spb.jpeg'];
-const imgAltArrays = ['текст1', 'текст2', 'текст3'];
+const addPhotoPopup = page.querySelector('.popup_add-photo');
+const addPhotoButton = content.querySelector('.profile__btn-add');
+const photoNameInput = addPhotoPopup.querySelector('.popup__input_photo-name');
+const photoUrlInput = addPhotoPopup.querySelector('.popup__input_photo-url');
 
-function addRandomCard() {
-  let title = getRandomElement(titleArrays);
-  let imgPath = getRandomElement(imgPathArrays);
-  let imgAlt = getRandomElement(imgAltArrays);
-  addCard(title, imgPath, imgAlt);
-}
+addPhotoButton.addEventListener('click', () => {
+  photoNameInput.value = '';
+  photoUrlInput.value = '';
+  openPopup(addPhotoPopup);
+});
 
-function getRandomElement(array) {
-  let random = Math.random();
-  let randomIndex = Math.floor(array.length * random);
-  return array[randomIndex];
-}
+const addPhotoForm = addPhotoPopup.querySelector('.popup__form');
 
-function addCard(title, imgPath, imgAlt) {
-  galleryContainer.insertAdjacentHTML(
-      'beforeend', `<li class="gallery__card">
-        <img class="gallery__photo" src="${imgPath}" alt="${imgAlt}">
-        <div class="gallery__caption">
-           <h2 class="gallery__text">${title}</h2>
-           <button class="gallery__like hover hover_button_like" type="button"
-                    aria-label="Поставить like"></button>
-        </div>
-      </li>`
-  );
-}
-
-profileBtnAdd.addEventListener('click', addRandomCard);
-
-
-// установка лайков
-
-const likeButtons = content.querySelectorAll('.gallery__like');
-
-function toggleLike(event) {
-  event.target.classList.toggle('gallery__like_active');
-}
-
-for (let i = 0; i < likeButtons.length; i++) {
-  likeButtons[i].addEventListener('click', toggleLike);
-}
+addPhotoForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const title = photoNameInput.value;
+  const url = photoUrlInput.value;
+  const cardData = {
+    name: title,
+    link: url
+  }
+  addCard(cardData);
+  closePopup(addPhotoPopup);
+})
