@@ -44,11 +44,11 @@
       <button class="popup__btn-close hover hover_button_basic" aria-label="Закрыть окно"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
       <form class="popup__form" name="edit-profile">
-        <input class="popup__input popup__input_profile-name" type="text" id="profile-name" name="profile-name"
-               placeholder="Введите имя профиля" required>
-        <input class="popup__input popup__input_profile-description" type="text" id="profile-description"
-               name="profile-description"
-               placeholder="Введите описание профиля" required>
+        <input class="popup__input popup__input_profile-name" id="profile-name" name="profile-name"
+               placeholder="Введите имя профиля" type="text" minlength="2" maxlength="40" required>
+        <input class="popup__input popup__input_profile-description" id="profile-description"
+               name="profile-description" placeholder="Введите описание профиля" type="text" minlength="2"
+               maxlength="200" required>
         <button class="popup__btn-save hover hover_button_save" type="submit">Сохранить</button>
       </form>
     </div>
@@ -58,10 +58,10 @@
       <button class="popup__btn-close hover hover_button_basic" aria-label="Закрыть окно"></button>
       <h3 class="popup__title">Новое место</h3>
       <form class="popup__form" name="add-photo">
-        <input class="popup__input popup__input_photo-name" type="text" id="photo-name" name="photo-name"
-               placeholder="Название" required>
-        <input class="popup__input popup__input_photo-url" type="url" id="photo-url" name="photo-url"
-               placeholder="Ссылка на картинку" required>
+        <input class="popup__input popup__input_photo-name" id="photo-name" name="photo-name"
+               placeholder="Название" type="text" minlength="2" maxlength="30" required>
+        <input class="popup__input popup__input_photo-url" id="photo-url" name="photo-url"
+               placeholder="Ссылка на картинку" type="url" required>
         <button class="popup__btn-save hover hover_button_save" type="submit">Сохранить</button>
       </form>
     </div>
