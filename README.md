@@ -10,5 +10,6 @@
 
 - HTML5
 - CCS3
+- JavaScript
 
 ## GitHub Pages [Ссылка](https://lizapetkova.github.io/mesto-project-bootcamp/)
