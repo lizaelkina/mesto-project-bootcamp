@@ -25,74 +25,30 @@
     </section>
     <section class="gallery content__gallery" aria-label="Галерея фотографий пользователя">
       <ul class="gallery__cards">
-        <li class="gallery__card">
-          <img class="gallery__photo" src="./images/spb.jpeg" alt="Большеохтинский разводной мост">
-          <button class="gallery__delete hover hover_button_basic" type="button"
-                  aria-label="Удалить изображение"></button>
-          <div class="gallery__caption">
-            <h2 class="gallery__text">Санкт-Петербург</h2>
-            <button class="gallery__like gallery__like_active hover hover_button_like" type="button"
-                    aria-label="Поставить like"></button>
-          </div>
-        </li>
-        <li class="gallery__card">
-          <img class="gallery__photo" src="./images/moscow.jpeg" alt="МГУ имени М.В.Ломоносова">
-          <button class="gallery__delete hover hover_button_basic" type="button"
-                  aria-label="Удалить изображение"></button>
-          <div class="gallery__caption">
-            <h2 class="gallery__text">Москва</h2>
-            <button class="gallery__like hover hover_button_like" type="button" aria-label="Поставить like"></button>
-          </div>
-        </li>
-        <li class="gallery__card">
-          <img class="gallery__photo" src="./images/kazan.jpeg" alt="Мечеть «Кул-Шариф»">
-          <button class="gallery__delete hover hover_button_basic" type="button"
-                  aria-label="Удалить изображение"></button>
-          <div class="gallery__caption">
-            <h2 class="gallery__text">Казань</h2>
-            <button class="gallery__like hover hover_button_like" type="button" aria-label="Поставить like"></button>
-          </div>
-        </li>
-        <li class="gallery__card">
-          <img class="gallery__photo" src="./images/vyborg.jpeg" alt="Выборгская крепость">
-          <button class="gallery__delete hover hover_button_basic" type="button"
-                  aria-label="Удалить изображение"></button>
-          <div class="gallery__caption">
-            <h2 class="gallery__text">Выборг</h2>
-            <button class="gallery__like hover hover_button_like" type="button" aria-label="Поставить like"></button>
-          </div>
-        </li>
-        <li class="gallery__card">
-          <img class="gallery__photo" src="./images/pskov.jpeg" alt="Храм Покрова и Рождества от Пролома">
-          <button class="gallery__delete hover hover_button_basic" type="button"
-                  aria-label="Удалить изображение"></button>
-          <div class="gallery__caption">
-            <h2 class="gallery__text">Псков</h2>
-            <button class="gallery__like hover hover_button_like" type="button" aria-label="Поставить like"></button>
-          </div>
-        </li>
-        <li class="gallery__card">
-          <img class="gallery__photo" src="./images/korela.jpeg" alt="Крепость «Корела»">
-          <button class="gallery__delete hover hover_button_basic" type="button"
-                  aria-label="Удалить изображение"></button>
-          <div class="gallery__caption">
-            <h2 class="gallery__text">Приозёрск</h2>
-            <button class="gallery__like hover hover_button_like" type="button" aria-label="Поставить like"></button>
-          </div>
-        </li>
       </ul>
     </section>
   </main>
   <footer class="footer page__footer">&copy; 2023 Mesto Russia</footer>
+  <template id="card-item-template">
+    <li class="gallery__card">
+      <img class="gallery__photo" src="" alt="">
+      <button class="gallery__delete hover hover_button_basic" type="button"
+              aria-label="Удалить изображение"></button>
+      <div class="gallery__caption">
+        <h2 class="gallery__text"></h2>
+        <button class="gallery__like hover hover_button_like" type="button" aria-label="Поставить like"></button>
+      </div>
+    </li>
+  </template>
   <div class="popup popup_edit-profile">
     <div class="popup__container">
       <button class="popup__btn-close hover hover_button_basic" aria-label="Закрыть окно"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
       <form class="popup__form" name="edit-profile">
         <input class="popup__input popup__input_profile-name" type="text" id="profile-name" name="profile-name"
-               placeholder="Введите имя профиля" value="Лиза Петкова" required>
+               placeholder="Введите имя профиля" required>
         <input class="popup__input popup__input_profile-description" type="text" id="profile-description" name="profile-description"
-               placeholder="Введите описание профиля" value="Путешественник" required>
+               placeholder="Введите описание профиля" required>
         <button class="popup__btn-save hover hover_button_save" type="submit">Сохранить</button>
       </form>
     </div>
@@ -120,6 +76,6 @@
     </div>
   </div>
 </div>
-<script src="script.js"></script>
+<script src="script.js" defer></script>
 </body>
 </html>
