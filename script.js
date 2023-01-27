@@ -24,7 +24,7 @@ closePopupButtons.forEach(button => {
 
 // редактирование профиля
 
-const editProfilePopup = page.querySelector('.popup_edit-profile');
+const editProfilePopup = page.querySelector('.popup_type_edit-profile');
 const editProfileButton = content.querySelector('.profile__btn-edit');
 const saveProfileForm = editProfilePopup.querySelector('.form');
 const profileNameInput = saveProfileForm.querySelector('.form__input_profile-name');
@@ -66,7 +66,7 @@ function addCard(cardData) {
   cardTextElement.textContent = cardData.name;
   galleryCardsElement.prepend(cardElement);
 
-  const viewPhotoPopup = page.querySelector('.popup_viewer-photo');
+  const viewPhotoPopup = page.querySelector('.popup_type_viewer-photo');
   const viewPhotoImage = viewPhotoPopup.querySelector('.viewer__photo');
   const viewPhotoTitle = viewPhotoPopup.querySelector('.viewer__caption');
 
@@ -119,7 +119,7 @@ galleryCards.reverse().forEach(card => {
 
 // кнопка добавления изображений
 
-const addPhotoPopup = page.querySelector('.popup_add-photo');
+const addPhotoPopup = page.querySelector('.popup_type_add-photo');
 const addPhotoButton = content.querySelector('.profile__btn-add');
 const photoNameInput = addPhotoPopup.querySelector('.form__input_photo-name');
 const photoUrlInput = addPhotoPopup.querySelector('.popup__input_photo-url');
