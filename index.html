@@ -40,7 +40,7 @@
     </li>
   </template>
   <div class="popup popup_edit-profile">
-    <div class="popup__container">
+    <div class="popup__container popup__container_form">
       <button class="popup__btn-close hover hover_button_basic" aria-label="Закрыть окно"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
       <form class="form" name="edit-profile">
@@ -60,7 +60,7 @@
     </div>
   </div>
   <div class="popup popup_add-photo">
-    <div class="popup__container">
+    <div class="popup__container popup__container_form">
       <button class="popup__btn-close hover hover_button_basic" aria-label="Закрыть окно"></button>
       <h3 class="popup__title">Новое место</h3>
       <form class="form" name="add-photo">
@@ -80,11 +80,11 @@
     </div>
   </div>
   <div class="popup popup_viewer-photo">
-    <div class="popup__viewer">
+    <div class="popup__container">
       <button class="popup__btn-close hover hover_button_basic" aria-label="Закрыть окно"></button>
-      <figure class="popup__figure">
-        <img class="popup__photo" src="" alt="">
-        <figcaption class="popup__caption"></figcaption>
+      <figure class="viewer">
+        <img class="viewer__photo" src="" alt="">
+        <figcaption class="viewer__caption"></figcaption>
       </figure>
     </div>
   </div>

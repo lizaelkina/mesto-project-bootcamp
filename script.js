@@ -67,8 +67,8 @@ function addCard(cardData) {
   galleryCardsElement.prepend(cardElement);
 
   const viewPhotoPopup = page.querySelector('.popup_viewer-photo');
-  const viewPhotoImage = viewPhotoPopup.querySelector('.popup__photo');
-  const viewPhotoTitle = viewPhotoPopup.querySelector('.popup__caption');
+  const viewPhotoImage = viewPhotoPopup.querySelector('.viewer__photo');
+  const viewPhotoTitle = viewPhotoPopup.querySelector('.viewer__caption');
 
   cardImage.addEventListener('click', () => {
     viewPhotoImage.src = cardData.link;
