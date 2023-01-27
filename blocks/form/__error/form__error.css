@@ -1,6 +1,7 @@
 .form__error {
   position: absolute;
-  margin-top: 5px;
+  left: 0;
+  bottom: -20px;
   font-family: var(--font-family);
   font-style: normal;
   font-weight: 400;
