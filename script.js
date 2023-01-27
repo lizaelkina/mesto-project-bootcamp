@@ -122,7 +122,7 @@ galleryCards.reverse().forEach(card => {
 const addPhotoPopup = page.querySelector('.popup_type_add-photo');
 const addPhotoButton = content.querySelector('.profile__btn-add');
 const photoNameInput = addPhotoPopup.querySelector('.form__input_photo-name');
-const photoUrlInput = addPhotoPopup.querySelector('.popup__input_photo-url');
+const photoUrlInput = addPhotoPopup.querySelector('.form__input_photo-url');
 
 addPhotoButton.addEventListener('click', () => {
   photoNameInput.value = '';
