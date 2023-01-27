@@ -44,11 +44,17 @@
       <button class="popup__btn-close hover hover_button_basic" aria-label="Закрыть окно"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
       <form class="form" name="edit-profile">
-        <input class="form__input form__input_profile-name" type="text" id="profile-name" name="profile-name"
-               placeholder="Введите имя профиля" required>
-        <input class="form__input form__input_profile-description" type="text" id="profile-description"
-               name="profile-description"
-               placeholder="Введите описание профиля" required>
+        <div class="form__container">
+          <input class="form__input form__input_profile-name" type="text" id="profile-name" name="profile-name"
+                 placeholder="Введите имя профиля" required>
+          <span class="form__error" id="profile-name-error"></span>
+        </div>
+        <div class="form__container">
+          <input class="form__input form__input_profile-description" type="text" id="profile-description"
+                 name="profile-description"
+                 placeholder="Введите описание профиля" required>
+          <span class="form__error" id="profile-description-error"></span>
+        </div>
         <button class="form__btn-save hover hover_button_save" type="submit">Сохранить</button>
       </form>
     </div>
@@ -59,12 +65,13 @@
       <h3 class="popup__title">Новое место</h3>
       <form class="form" name="add-photo">
         <div class="form__container">
-          <input class="form__input form__input_photo-name form__input_error" type="text" id="photo-name" name="photo-name"
+          <input class="form__input form__input_photo-name" type="text" id="photo-name"
+                 name="photo-name"
                  placeholder="Название" required>
           <span class="form__error" id="photo-name-error"></span>
         </div>
         <div class="form__container">
-          <input class="form__input popup__input_photo-url form__input_error" type="url" id="photo-url" name="photo-url"
+          <input class="form__input popup__input_photo-url" type="url" id="photo-url" name="photo-url"
                  placeholder="Ссылка на картинку" required>
           <span class="form__error" id="photo-url-error"></span>
         </div>
