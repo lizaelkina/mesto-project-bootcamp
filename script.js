@@ -27,8 +27,8 @@ closePopupButtons.forEach(button => {
 const editProfilePopup = page.querySelector('.popup_type_edit-profile');
 const editProfileButton = content.querySelector('.profile__btn-edit');
 const saveProfileForm = editProfilePopup.querySelector('.form');
-const profileNameInput = saveProfileForm.querySelector('.form__input_profile-name');
-const profileDescriptionInput = saveProfileForm.querySelector('.form__input_profile-description');
+const profileNameInput = saveProfileForm.querySelector('.form__input_type_profile-name');
+const profileDescriptionInput = saveProfileForm.querySelector('.form__input_type_profile-description');
 const profileNameElement = content.querySelector('.profile__title');
 const profileDescriptionElement = content.querySelector('.profile__subtitle');
 
@@ -121,8 +121,8 @@ galleryCards.reverse().forEach(card => {
 
 const addPhotoPopup = page.querySelector('.popup_type_add-photo');
 const addPhotoButton = content.querySelector('.profile__btn-add');
-const photoNameInput = addPhotoPopup.querySelector('.form__input_photo-name');
-const photoUrlInput = addPhotoPopup.querySelector('.form__input_photo-url');
+const photoNameInput = addPhotoPopup.querySelector('.form__input_type_photo-name');
+const photoUrlInput = addPhotoPopup.querySelector('.form__input_type_photo-url');
 
 addPhotoButton.addEventListener('click', () => {
   photoNameInput.value = '';
