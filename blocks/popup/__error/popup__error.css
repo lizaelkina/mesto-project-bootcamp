@@ -1,4 +1,4 @@
-.popup__error {
+.form__error {
   position: absolute;
   margin-top: 5px;
   font-family: var(--font-family);

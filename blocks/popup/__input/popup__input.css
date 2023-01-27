@@ -1,4 +1,4 @@
-.popup__input {
+.form__input {
   box-sizing: border-box;
   margin: 0;
   border: 0;
@@ -17,11 +17,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.popup__input:focus {
+.form__input:focus {
   outline-color: rgba(0, 0, 0, .2);
 }
 
-.popup__input::placeholder {
+.form__input::placeholder {
   font-family: var(--font-family);
   font-style: normal;
   font-weight: 400;
@@ -32,7 +32,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.popup__input::-webkit-input-placeholder {
+.form__input::-webkit-input-placeholder {
   font-family: var(--font-family);
   font-style: normal;
   font-weight: 400;
@@ -43,7 +43,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.popup__input::-moz-placeholder {
+.form__input::-moz-placeholder {
   font-family: var(--font-family);
   font-style: normal;
   font-weight: 400;

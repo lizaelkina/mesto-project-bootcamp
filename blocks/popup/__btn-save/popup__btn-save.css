@@ -1,4 +1,4 @@
-.popup__btn-save {
+.form__btn-save {
   margin-top: 18px;
   padding: 0;
   width: 100%;
@@ -21,7 +21,7 @@
 }
 
 @media (max-width: 720px) {
-  .popup__btn-save {
+  .form__btn-save {
     height: 46px;
     font-size: clamp(14px, 3vw, 18px);
     line-height: clamp(17px, 3.5vw, 22px);
@@ -30,7 +30,7 @@
 
 
 @media (max-width: 540px) {
-  .popup__btn-save {
+  .form__btn-save {
     margin-top: 15px;
     max-width: 238px;
     min-height: 46px;
