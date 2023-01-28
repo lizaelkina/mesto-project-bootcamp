@@ -9,13 +9,13 @@ function openPopup(popup) {
 
 // закрытие попапов
 
-const closePopupButtons = page.querySelectorAll('.popup__btn-close');
+const buttonsClosePopup = page.querySelectorAll('.popup__btn-close');
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
-closePopupButtons.forEach(button => {
+buttonsClosePopup.forEach(button => {
   button.addEventListener('click', event => {
     const popup = event.target.closest('.popup');
     closePopup(popup);
@@ -24,20 +24,22 @@ closePopupButtons.forEach(button => {
 
 // редактирование профиля
 
-const editProfilePopup = page.querySelector('.popup_type_edit-profile');
-const editProfileButton = content.querySelector('.profile__btn-edit');
-const saveProfileForm = editProfilePopup.querySelector('.form');
-const profileNameInput = saveProfileForm.querySelector('.form__input_type_profile-name');
-const profileDescriptionInput = saveProfileForm.querySelector('.form__input_type_profile-description');
+const popupProfile = page.querySelector('.popup_type_edit-profile');
+const buttonEditProfile = content.querySelector('.profile__btn-edit');
+const formSaveProfile = popupProfile.querySelector('.form');
+const profileNameInput = formSaveProfile.querySelector('.form__input_type_profile-name');
+const profileDescriptionInput = formSaveProfile.querySelector('.form__input_type_profile-description');
 const profileNameElement = content.querySelector('.profile__title');
 const profileDescriptionElement = content.querySelector('.profile__subtitle');
 
 
-editProfileButton.addEventListener('click', () => {
+function openProfilePopup() {
   profileNameInput.value = profileNameElement.textContent;
   profileDescriptionInput.value = profileDescriptionElement.textContent;
-  openPopup(editProfilePopup);
-});
+  openPopup(popupProfile);
+}
+
+buttonEditProfile.addEventListener('click', openProfilePopup);
 
 function saveProfile(event) {
   event.preventDefault();
@@ -45,45 +47,51 @@ function saveProfile(event) {
   const description = profileDescriptionInput.value;
   profileNameElement.textContent = name;
   profileDescriptionElement.textContent = description;
-  closePopup(editProfilePopup);
+  closePopup(popupProfile);
 }
 
-saveProfileForm.addEventListener('submit', saveProfile);
+formSaveProfile.addEventListener('submit', saveProfile);
 
 // добавление изображений
 
 const cardTemplate = document.querySelector('#card-item-template').content;
 const galleryCardsElement = content.querySelector('.gallery__cards');
+const popupViewPhoto = page.querySelector('.popup_type_viewer-photo');
+const popupViewImage = popupViewPhoto.querySelector('.viewer__photo');
+const popupViewTitle = popupViewPhoto.querySelector('.viewer__caption');
 
-function addCard(cardData) {
+function createCardElement(cardData) {
   const cardElement = cardTemplate.querySelector('.gallery__card').cloneNode(true);
   const cardImage = cardElement.querySelector('.gallery__photo');
   const cardTextElement = cardElement.querySelector('.gallery__text');
-  const likeButton = cardElement.querySelector('.gallery__like');
-  const deleteButton = cardElement.querySelector('.gallery__delete');
+  const buttonLikeCard = cardElement.querySelector('.gallery__like');
+  const buttonDeleteCard = cardElement.querySelector('.gallery__delete');
   cardImage.src = cardData.link;
   cardImage.setAttribute('alt', cardData.name);
   cardTextElement.textContent = cardData.name;
-  galleryCardsElement.prepend(cardElement);
 
-  const viewPhotoPopup = page.querySelector('.popup_type_viewer-photo');
-  const viewPhotoImage = viewPhotoPopup.querySelector('.viewer__photo');
-  const viewPhotoTitle = viewPhotoPopup.querySelector('.viewer__caption');
+  function openViewPhotoPopup() {
+    popupViewImage.src = cardData.link;
+    popupViewImage.setAttribute('alt', cardData.name);
+    popupViewTitle.textContent = cardData.name;
+    openPopup(popupViewPhoto);
+  }
 
-  cardImage.addEventListener('click', () => {
-    viewPhotoImage.src = cardData.link;
-    viewPhotoImage.setAttribute('alt', cardData.name);
-    viewPhotoTitle.textContent = cardData.name;
-    openPopup(viewPhotoPopup);
-  })
+  cardImage.addEventListener('click', openViewPhotoPopup);
 
-  likeButton.addEventListener('click', () => {
-    likeButton.classList.toggle('gallery__like_active');
-  })
+  function toggleLike() {
+    buttonLikeCard.classList.toggle('gallery__like_active');
+  }
 
-  deleteButton.addEventListener('click', () => {
+  buttonLikeCard.addEventListener('click', toggleLike);
+
+  function deleteCard() {
     cardElement.remove();
-  })
+  }
+
+  buttonDeleteCard.addEventListener('click', deleteCard);
+
+  return cardElement;
 }
 
 const galleryCards = [
@@ -113,26 +121,27 @@ const galleryCards = [
   }
 ];
 
-galleryCards.reverse().forEach(card => {
-  addCard(card);
+galleryCards.forEach(card => {
+  const cardElement = createCardElement(card);
+  galleryCardsElement.append(cardElement);
 })
 
 // кнопка добавления изображений
 
-const addPhotoPopup = page.querySelector('.popup_type_add-photo');
-const addPhotoButton = content.querySelector('.profile__btn-add');
-const photoNameInput = addPhotoPopup.querySelector('.form__input_type_photo-name');
-const photoUrlInput = addPhotoPopup.querySelector('.form__input_type_photo-url');
+const popupAddPhoto = page.querySelector('.popup_type_add-photo');
+const buttonAddPhoto = content.querySelector('.profile__btn-add');
+const formAddPhoto = popupAddPhoto.querySelector('.form');
+const photoNameInput = popupAddPhoto.querySelector('.form__input_type_photo-name');
+const photoUrlInput = popupAddPhoto.querySelector('.form__input_type_photo-url');
 
-addPhotoButton.addEventListener('click', () => {
-  photoNameInput.value = '';
-  photoUrlInput.value = '';
-  openPopup(addPhotoPopup);
-});
+function openAddPhotoPopup() {
+  formAddPhoto.reset();
+  openPopup(popupAddPhoto);
+}
 
-const addPhotoForm = addPhotoPopup.querySelector('.form');
+buttonAddPhoto.addEventListener('click', openAddPhotoPopup);
 
-addPhotoForm.addEventListener('submit', (event) => {
+function addPhotoPopup(event) {
   event.preventDefault();
   const title = photoNameInput.value;
   const url = photoUrlInput.value;
@@ -140,6 +149,9 @@ addPhotoForm.addEventListener('submit', (event) => {
     name: title,
     link: url
   }
-  addCard(cardData);
-  closePopup(addPhotoPopup);
-})
+  const cardElement = createCardElement(cardData);
+  galleryCardsElement.prepend(cardElement);
+  closePopup(popupAddPhoto);
+}
+
+formAddPhoto.addEventListener('submit', addPhotoPopup);
