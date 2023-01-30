@@ -43,14 +43,14 @@
     <div class="popup__container popup__container_form">
       <button class="popup__btn-close hover hover_button_basic" aria-label="Закрыть окно"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
-      <form class="form" name="edit-profile" action="#">
-        <input class="form__input form__input_type_profile-name" type="text" id="profile-name" name="profile-name"
+      <form class="form" name="edit-profile" action="#" novalidate>
+        <input class="form__input form__input_type_profile-name" id="profile-name" type="text"
                placeholder="Введите имя профиля" minlength="2" maxlength="40" required>
-        <span class="form__error form__error_active" id="profile-name-error"></span>
-        <input class="form__input form__input_type_profile-description" type="text" id="profile-description"
-               name="profile-description" placeholder="Введите описание профиля"
+        <span class="form__error profile-name-error"></span>
+        <input class="form__input form__input_type_profile-description" id="profile-description" type="text"
+               placeholder="Введите описание профиля"
                minlength="2" maxlength="200" required>
-        <span class="form__error form__error_active" id="profile-description-error"></span>
+        <span class="form__error profile-description-error"></span>
         <button class="form__btn-save hover hover_button_save" type="submit">Сохранить</button>
       </form>
     </div>
@@ -59,13 +59,13 @@
     <div class="popup__container popup__container_form">
       <button class="popup__btn-close hover hover_button_basic" aria-label="Закрыть окно"></button>
       <h3 class="popup__title">Новое место</h3>
-      <form class="form" name="add-photo" action="#">
+      <form class="form" name="add-photo" action="#" novalidate>
         <input class="form__input form__input_type_photo-name" type="text" id="photo-name"
-               name="photo-name" placeholder="Название" minlength="2" maxlength="30" required>
-        <span class="form__error" id="photo-name-error"></span>
-        <input class="form__input form__input_type_photo-url" type="url" id="photo-url" name="photo-url"
+               placeholder="Название" minlength="2" maxlength="30" required>
+        <span class="form__error photo-name-error"></span>
+        <input class="form__input form__input_type_photo-url" type="url" id="photo-url"
                placeholder="Ссылка на картинку" required>
-        <span class="form__error" id="photo-url-error"></span>
+        <span class="form__error photo-url-error"></span>
         <button class="form__btn-save hover hover_button_save" type="submit">Сохранить</button>
       </form>
     </div>
