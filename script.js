@@ -1,6 +1,15 @@
 const page = document.querySelector('.page');
 const content = page.querySelector('.content');
 
+const configSelectorForm = {
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__btn-save',
+  inactiveButtonClass: 'form__btn-save_disabled',
+  inputErrorClass: 'form__input_error',
+  textErrorClass: 'form__error_active'
+}
+
 // открытие попапов
 
 function openPopup(popup) {
@@ -19,7 +28,7 @@ popupList.forEach(popup => {
   const buttonClosePopup = popup.querySelector('.popup__btn-close');
   buttonClosePopup.addEventListener('click', () => closePopup(popup));
   popup.addEventListener('click', (event) => {
-    if(event.target === popup) {
+    if (event.target === popup) {
       closePopup(popup);
     }
   });
@@ -40,6 +49,9 @@ const buttonEditProfile = content.querySelector('.profile__btn-edit');
 const formSaveProfile = popupProfile.querySelector('.form');
 const profileNameInput = formSaveProfile.querySelector('.form__input_type_profile-name');
 const profileDescriptionInput = formSaveProfile.querySelector('.form__input_type_profile-description');
+const profileNameErrorElement = formSaveProfile.querySelector('.profile-name-error');
+const profileDescriptionErrorElement = formSaveProfile.querySelector('.profile-description-error');
+const buttonSaveProfile = popupProfile.querySelector('.form__btn-save')
 const profileNameElement = content.querySelector('.profile__title');
 const profileDescriptionElement = content.querySelector('.profile__subtitle');
 
@@ -47,6 +59,9 @@ const profileDescriptionElement = content.querySelector('.profile__subtitle');
 function openProfilePopup() {
   profileNameInput.value = profileNameElement.textContent;
   profileDescriptionInput.value = profileDescriptionElement.textContent;
+  hideInputError(profileNameInput, profileNameErrorElement, configSelectorForm);
+  hideInputError(profileDescriptionInput, profileDescriptionErrorElement, configSelectorForm);
+  toggleButtonState(buttonSaveProfile, false, configSelectorForm);
   openPopup(popupProfile);
 }
 
@@ -144,9 +159,15 @@ const buttonAddPhoto = content.querySelector('.profile__btn-add');
 const formAddPhoto = popupAddPhoto.querySelector('.form');
 const photoNameInput = popupAddPhoto.querySelector('.form__input_type_photo-name');
 const photoUrlInput = popupAddPhoto.querySelector('.form__input_type_photo-url');
+const photoNameErrorElement = popupAddPhoto.querySelector('.photo-name-error');
+const photoUrlErrorElement = popupAddPhoto.querySelector('.photo-url-error');
+const buttonSavePhoto = popupAddPhoto.querySelector('.form__btn-save')
 
 function openAddPhotoPopup() {
   formAddPhoto.reset();
+  hideInputError(photoNameInput, photoNameErrorElement, configSelectorForm);
+  hideInputError(photoUrlInput, photoUrlErrorElement, configSelectorForm);
+  toggleButtonState(buttonSavePhoto, false, configSelectorForm);
   openPopup(popupAddPhoto);
 }
 
@@ -168,3 +189,62 @@ function addPhotoPopup(event) {
 formAddPhoto.addEventListener('submit', addPhotoPopup);
 
 // валидация форм
+
+function showInputError(inputElement, errorElement, config) {
+  inputElement.classList.add(config.inputErrorClass);
+  errorElement.classList.add(config.textErrorClass);
+  errorElement.textContent = inputElement.validationMessage;
+}
+
+function hideInputError(inputElement, errorElement, config) {
+  inputElement.classList.remove(config.inputErrorClass);
+  errorElement.classList.remove(config.textErrorClass);
+  errorElement.textContent = inputElement.validationMessage;
+}
+
+function toggleButtonState(buttonElement, isActive, config) {
+  console.log('toggleButtonState', buttonElement, isActive, config)
+  if (isActive) {
+    buttonElement.disabled = false;
+    buttonElement.classList.remove(config.inactiveButtonClass);
+    buttonElement.classList.add('hover');
+    buttonElement.classList.add('hover_button_save');
+  } else {
+    buttonElement.disabled = 'disabled';
+    buttonElement.classList.add(config.inactiveButtonClass);
+    buttonElement.classList.remove('hover');
+    buttonElement.classList.remove('hover_button_save');
+  }
+}
+
+function checkInputValidity(inputElement, formElement, config) {
+  const isInputValid = inputElement.validity.valid;
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  if (!isInputValid) {
+    showInputError(inputElement, errorElement, config);
+  } else {
+    hideInputError(inputElement, errorElement, config);
+  }
+}
+
+function setFormEventListeners(formElement, config) {
+  const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
+  const submitButtonElement = formElement.querySelector(config.submitButtonSelector);
+
+  formElement.addEventListener('submit', (event) => event.preventDefault());
+
+  inputList.forEach((inputItem) => {
+    inputItem.addEventListener('input', () => {
+      toggleButtonState(submitButtonElement, formElement.checkValidity(), config);
+      checkInputValidity(inputItem, formElement, config);
+    })
+  })
+}
+
+function enableValidation(config) {
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
+  formList.forEach((formItem) => setFormEventListeners(formItem, config));
+}
+
+enableValidation(configSelectorForm);
+
