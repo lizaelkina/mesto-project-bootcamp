@@ -12,14 +12,23 @@ const configSelectorForm = {
 
 // открытие попапов
 
+let closePopupOnEscapeListener;
+
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  closePopupOnEscapeListener = event => {
+    if (event.key === 'Escape') {
+      closePopup(popup);
+    }
+  }
+  document.addEventListener('keyup', closePopupOnEscapeListener);
 }
 
 // закрытие попапов
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keyup', closePopupOnEscapeListener);
 }
 
 const popupList = page.querySelectorAll('.popup');
@@ -34,13 +43,6 @@ popupList.forEach(popup => {
   });
 })
 
-document.addEventListener('keyup', event => {
-  if (event.key === 'Escape') {
-    popupList.forEach(popup => {
-      closePopup(popup);
-    });
-  }
-})
 
 // редактирование профиля
 
@@ -147,10 +149,14 @@ const galleryCards = [
   }
 ];
 
-galleryCards.forEach(card => {
-  const cardElement = createCardElement(card);
-  galleryCardsElement.append(cardElement);
-})
+function fillGallery() {
+  galleryCards.forEach(card => {
+    const cardElement = createCardElement(card);
+    galleryCardsElement.append(cardElement);
+  })
+}
+
+fillGallery();
 
 // кнопка добавления изображений
 
@@ -203,7 +209,6 @@ function hideInputError(inputElement, errorElement, config) {
 }
 
 function toggleButtonState(buttonElement, isActive, config) {
-  console.log('toggleButtonState', buttonElement, isActive, config)
   if (isActive) {
     buttonElement.disabled = false;
     buttonElement.classList.remove(config.inactiveButtonClass);
@@ -218,12 +223,12 @@ function toggleButtonState(buttonElement, isActive, config) {
 }
 
 function checkInputValidity(inputElement, formElement, config) {
-  const isInputValid = inputElement.validity.valid;
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  if (!isInputValid) {
-    showInputError(inputElement, errorElement, config);
-  } else {
+  const isInputValid = inputElement.validity.valid;
+  if (isInputValid) {
     hideInputError(inputElement, errorElement, config);
+  } else {
+    showInputError(inputElement, errorElement, config);
   }
 }
 
@@ -243,8 +248,7 @@ function setFormEventListeners(formElement, config) {
 
 function enableValidation(config) {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
-  formList.forEach((formItem) => setFormEventListeners(formItem, config));
+  formList.forEach(formItem => setFormEventListeners(formItem, config));
 }
 
 enableValidation(configSelectorForm);
-

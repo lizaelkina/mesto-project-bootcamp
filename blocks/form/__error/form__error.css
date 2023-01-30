@@ -1,12 +1,13 @@
 .form__error {
   visibility: hidden;
-  margin: 5px 0 10px;
-  min-height: 15px;
+  box-sizing: border-box;
+  padding-top: 5px;
+  min-height: 30px;
   font-family: var(--font-family);
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
-  line-height: 15px;
+  line-height: 12px; /* в макете 15px, без учета втрой строки, которая не должна расширять контейнер */
   color: #ff0000;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
