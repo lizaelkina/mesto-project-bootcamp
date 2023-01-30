@@ -9,17 +9,28 @@ function openPopup(popup) {
 
 // закрытие попапов
 
-const buttonsClosePopup = page.querySelectorAll('.popup__btn-close');
-
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
-buttonsClosePopup.forEach(button => {
-  button.addEventListener('click', event => {
-    const popup = event.target.closest('.popup');
-    closePopup(popup);
+const popupList = page.querySelectorAll('.popup');
+
+popupList.forEach(popup => {
+  const buttonClosePopup = popup.querySelector('.popup__btn-close');
+  buttonClosePopup.addEventListener('click', () => closePopup(popup));
+  popup.addEventListener('click', (event) => {
+    if(event.target === popup) {
+      closePopup(popup);
+    }
   });
+})
+
+document.addEventListener('keyup', event => {
+  if (event.key === 'Escape') {
+    popupList.forEach(popup => {
+      closePopup(popup);
+    });
+  }
 })
 
 // редактирование профиля
@@ -155,3 +166,5 @@ function addPhotoPopup(event) {
 }
 
 formAddPhoto.addEventListener('submit', addPhotoPopup);
+
+// валидация форм
