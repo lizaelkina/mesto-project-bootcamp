@@ -45,13 +45,13 @@
       <h3 class="popup__title">Редактировать профиль</h3>
       <form class="form" name="edit-profile" action="#" novalidate>
         <input class="form__input form__input_type_profile-name" id="profile-name" type="text"
-               placeholder="Введите имя профиля" minlength="2" maxlength="40" required>
+               placeholder="Введите имя профиля" minlength="2" maxlength="40" autocomplete="off" required>
         <span class="form__error profile-name-error"></span>
         <input class="form__input form__input_type_profile-description" id="profile-description" type="text"
-               placeholder="Введите описание профиля"
+               placeholder="Введите описание профиля" autocomplete="off"
                minlength="2" maxlength="200" required>
         <span class="form__error profile-description-error"></span>
-        <button class="form__btn-save hover hover_button_save" type="submit">Сохранить</button>
+        <button class="form__btn-save" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
@@ -61,12 +61,12 @@
       <h3 class="popup__title">Новое место</h3>
       <form class="form" name="add-photo" action="#" novalidate>
         <input class="form__input form__input_type_photo-name" type="text" id="photo-name"
-               placeholder="Название" minlength="2" maxlength="30" required>
+               placeholder="Название" minlength="2" maxlength="30" autocomplete="off" required>
         <span class="form__error photo-name-error"></span>
         <input class="form__input form__input_type_photo-url" type="url" id="photo-url"
-               placeholder="Ссылка на картинку" required>
+               placeholder="Ссылка на картинку" autocomplete="off" required>
         <span class="form__error photo-url-error"></span>
-        <button class="form__btn-save hover hover_button_save" type="submit">Сохранить</button>
+        <button class="form__btn-save" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
