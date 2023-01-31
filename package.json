@@ -2,7 +2,7 @@
   "name": "mesto-project-bootcamp",
   "version": "1.0.0",
   "description": "Третья проектная работа на курсе Яндекс Практикума \"Фронтенд-разработчик буткемп\".",
-  "main": "script.js",
+  "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack serve"
