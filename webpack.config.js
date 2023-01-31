@@ -11,6 +11,9 @@ module.exports = {
     publicPath: ''
   },
   mode: 'development',
+  performance: {
+    maxAssetSize: 512000
+  },
   devServer: {
     static: path.resolve(__dirname, './dist'),
     compress: true,
