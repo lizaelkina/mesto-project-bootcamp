@@ -4,16 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mesto</title>
-  <link rel="stylesheet" href="pages/index.css">
 </head>
 <body class="root">
 <div class="page">
   <header class="header page__header">
-    <img class="logo" src="<%=require('/images/logo.svg')%>" alt="Логотип Mesto Russia">
+    <img class="logo" src="<%=require('./images/logo.svg')%>" alt="Логотип Mesto Russia">
   </header>
   <main class="content">
     <section class="profile content__profile" aria-label="Профиль пользователя">
-      <img class="profile__avatar" src="<%=require('/images/avatar.jpeg')%>" alt="Аватар профиля">
+      <img class="profile__avatar" src="<%=require('./images/avatar.jpeg')%>" alt="Аватар профиля">
       <div class="profile__info">
         <h1 class="profile__title">Лиза Петкова</h1>
         <button class="profile__btn-edit hover hover_button_basic" type="button"
