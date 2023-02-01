@@ -24,6 +24,14 @@ function toggleButtonState(buttonElement, isActive, config) {
   }
 }
 
+function clearErrorsOfForm(formElement, config) {
+  const inputList = formElement.querySelectorAll('.form__input');
+  inputList.forEach(inputElement => {
+    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+    hideInputError(inputElement, errorElement, config);
+  })
+}
+
 function checkInputValidity(inputElement, formElement, config) {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   const isInputValid = inputElement.validity.valid;
@@ -53,4 +61,4 @@ function enableValidation(config) {
   formList.forEach(formItem => setFormEventListeners(formItem, config));
 }
 
-export {enableValidation, hideInputError, toggleButtonState};
+export {enableValidation, toggleButtonState, clearErrorsOfForm};
