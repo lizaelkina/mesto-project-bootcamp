@@ -1,5 +1,5 @@
-.gallery__like {
-  grid-area: gallery__like;
+.card__like {
+  grid-area: card__like;
   padding: 0;
   max-width: 22px;
   width: 100%;
@@ -14,7 +14,7 @@
   cursor: pointer;
 }
 
-.gallery__like:hover {
+.card__like:hover {
   opacity: .5;
   transform: scale(1.2);
 }

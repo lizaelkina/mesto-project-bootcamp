@@ -1,4 +1,4 @@
-.gallery__delete {
+.card__delete {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -16,6 +16,6 @@
   cursor: pointer;
 }
 
-.gallery__delete:hover {
+.card__delete:hover {
   opacity: .6;
 }

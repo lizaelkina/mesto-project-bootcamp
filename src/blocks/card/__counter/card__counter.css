@@ -1,5 +1,5 @@
-.gallery__counter {
-  grid-area: gallery__counter;
+.card__counter {
+  grid-area: card__counter;
   justify-self: center;
   margin: 0;
   padding: 0;

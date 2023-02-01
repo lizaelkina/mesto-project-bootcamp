@@ -1,5 +1,5 @@
-.gallery__text {
-  grid-area: gallery__text;
+.card__text {
+  grid-area: card__text;
   margin: 0;
   padding: 0;
   font-family: var(--font-family);

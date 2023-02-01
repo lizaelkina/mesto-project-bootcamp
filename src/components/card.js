@@ -10,11 +10,11 @@ const popupViewImage = popupViewPhoto.querySelector('.viewer__photo');
 const popupViewTitle = popupViewPhoto.querySelector('.viewer__caption');
 
 function createCardElement(cardData) {
-  const cardElement = cardTemplate.querySelector('.gallery__card').cloneNode(true);
-  const cardImage = cardElement.querySelector('.gallery__photo');
-  const cardTextElement = cardElement.querySelector('.gallery__text');
-  const buttonLikeCard = cardElement.querySelector('.gallery__like');
-  const buttonDeleteCard = cardElement.querySelector('.gallery__delete');
+  const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
+  const cardImage = cardElement.querySelector('.card__photo');
+  const cardTextElement = cardElement.querySelector('.card__text');
+  const buttonLikeCard = cardElement.querySelector('.card__like');
+  const buttonDeleteCard = cardElement.querySelector('.card__delete');
   cardImage.src = cardData.link;
   cardImage.setAttribute('alt', cardData.name);
   cardTextElement.textContent = cardData.name;
@@ -29,7 +29,7 @@ function createCardElement(cardData) {
   cardImage.addEventListener('click', openViewPhotoPopup);
 
   function toggleLike() {
-    buttonLikeCard.classList.toggle('gallery__like_active');
+    buttonLikeCard.classList.toggle('card__like_active');
   }
 
   buttonLikeCard.addEventListener('click', toggleLike);
