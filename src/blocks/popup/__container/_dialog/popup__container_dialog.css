@@ -1,4 +1,4 @@
-.popup__container_form {
+.popup__container_dialog {
   max-width: 430px;
   width: 100%;
   box-sizing: border-box;
@@ -9,7 +9,7 @@
 }
 
 @media (max-width: 540px) {
-  .popup__container_form {
+  .popup__container_dialog {
     padding: 25px 22px;
     max-width: 282px;
   }

@@ -39,7 +39,7 @@
     </li>
   </template>
   <div class="popup popup_type_edit-profile">
-    <div class="popup__container popup__container_form">
+    <div class="popup__container popup__container_dialog">
       <button class="popup__btn-close hover hover_button_basic" aria-label="Закрыть окно"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
       <form class="form" name="edit-profile" action="#" novalidate>
@@ -50,12 +50,12 @@
                placeholder="Введите описание профиля" minlength="2" maxlength="200"
                autocomplete="off" required>
         <span class="form__error profile-description-error"></span>
-        <button class="form__btn-save" type="submit">Сохранить</button>
+        <button class="form__btn-save popup__btn" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
   <div class="popup popup_type_add-photo">
-    <div class="popup__container popup__container_form">
+    <div class="popup__container popup__container_dialog">
       <button class="popup__btn-close hover hover_button_basic" aria-label="Закрыть окно"></button>
       <h3 class="popup__title">Новое место</h3>
       <form class="form" name="add-photo" action="#" novalidate>
@@ -65,7 +65,7 @@
         <input class="form__input form__input_type_photo-url" type="url" id="photo-url"
                placeholder="Ссылка на картинку" autocomplete="off" required>
         <span class="form__error photo-url-error"></span>
-        <button class="form__btn-save" type="submit">Сохранить</button>
+        <button class="form__btn-save popup__btn" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
@@ -79,15 +79,22 @@
     </div>
   </div>
   <div class="popup popup_type_update-avatar">
-    <div class="popup__container popup__container_form">
+    <div class="popup__container popup__container_dialog">
       <button class="popup__btn-close hover hover_button_basic" aria-label="Закрыть окно"></button>
       <h3 class="popup__title">Обновить аватар</h3>
       <form class="form" name="update-avatar" action="#" novalidate>
         <input class="form__input form__input_type_avatar-url" type="url" id="avatar-url"
                placeholder="Ссылка на картинку" autocomplete="off" required>
         <span class="form__error avatar-url-error"></span>
-        <button class="form__btn-save" type="submit">Сохранить</button>
+        <button class="form__btn-save popup__btn" type="submit">Сохранить</button>
       </form>
+    </div>
+  </div>
+  <div class="popup popup_type_confirm">
+    <div class="popup__container popup__container_dialog">
+      <button class="popup__btn-close hover hover_button_basic" aria-label="Закрыть окно"></button>
+      <h3 class="popup__title">Вы уверены?</h3>
+      <button class="popup__btn" type="button">Да</button>
     </div>
   </div>
 </div>
