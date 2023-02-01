@@ -1,5 +1,5 @@
 .popup__title {
-  margin: 0 0 48px;
+  margin: 0;
   padding: 0;
   font-family: var(--font-family);
   font-style: normal;
@@ -13,7 +13,6 @@
 
 @media (max-width: 540px) {
   .popup__title {
-    margin-bottom: 75px;
     font-size: 18px;
     line-height: 22px;
   }
