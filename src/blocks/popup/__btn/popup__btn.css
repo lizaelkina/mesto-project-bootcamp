@@ -18,6 +18,8 @@
   color: var(--text-color);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: opacity .3s ease;
+  cursor: pointer;
 }
 
 @media (max-width: 720px) {
@@ -36,4 +38,8 @@
     font-size: 14px;
     line-height: 17px;
   }
+}
+
+.popup__btn:hover {
+  opacity: .8;
 }

@@ -11,6 +11,8 @@
   background-position: center;
   background-size: 22px 22px;
   background-repeat: no-repeat;
+  transition: opacity .3s ease;
+  cursor: pointer;
 }
 
 @media (max-width: 720px) {
@@ -19,4 +21,8 @@
     max-width: 282px;
     background-size: 16px 16px;
   }
+}
+
+.profile__btn-add:hover {
+  opacity: .6;
 }

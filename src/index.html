@@ -15,11 +15,11 @@
       <img class="profile__avatar" src="<%=require('./images/avatar.jpeg')%>" alt="Аватар профиля">
       <div class="profile__info">
         <h1 class="profile__title">Лиза Петкова</h1>
-        <button class="profile__btn-edit hover hover_button_basic" type="button"
+        <button class="profile__btn-edit" type="button"
                 aria-label="Редактировать профиль"></button>
         <p class="profile__subtitle">Путешественник</p>
       </div>
-      <button class="profile__btn-add hover hover_button_basic" type="button"
+      <button class="profile__btn-add" type="button"
               aria-label="Добавить изображение"></button>
     </section>
     <section class="gallery content__gallery" aria-label="Галерея фотографий пользователя">
@@ -30,17 +30,17 @@
   <template id="card-item-template">
     <li class="gallery__card">
       <img class="gallery__photo" src="#" alt="#">
-      <button class="gallery__delete hover hover_button_basic" type="button"
+      <button class="gallery__delete" type="button"
               aria-label="Удалить изображение"></button>
       <div class="gallery__caption">
         <h2 class="gallery__text"></h2>
-        <button class="gallery__like hover hover_button_like" type="button" aria-label="Поставить like"></button>
+        <button class="gallery__like" type="button" aria-label="Поставить like"></button>
       </div>
     </li>
   </template>
   <div class="popup popup_type_edit-profile">
     <div class="popup__container popup__container_dialog">
-      <button class="popup__btn-close hover hover_button_basic" aria-label="Закрыть окно"></button>
+      <button class="popup__btn-close" aria-label="Закрыть окно"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
       <form class="form" name="edit-profile" action="#" novalidate>
         <input class="form__input form__input_type_profile-name" id="profile-name" type="text"
@@ -56,7 +56,7 @@
   </div>
   <div class="popup popup_type_add-photo">
     <div class="popup__container popup__container_dialog">
-      <button class="popup__btn-close hover hover_button_basic" aria-label="Закрыть окно"></button>
+      <button class="popup__btn-close" aria-label="Закрыть окно"></button>
       <h3 class="popup__title">Новое место</h3>
       <form class="form" name="add-photo" action="#" novalidate>
         <input class="form__input form__input_type_photo-name" type="text" id="photo-name"
@@ -71,7 +71,7 @@
   </div>
   <div class="popup popup_type_viewer-photo">
     <div class="popup__container">
-      <button class="popup__btn-close hover hover_button_basic" aria-label="Закрыть окно"></button>
+      <button class="popup__btn-close" aria-label="Закрыть окно"></button>
       <figure class="viewer">
         <img class="viewer__photo" src="#" alt="#">
         <figcaption class="viewer__caption"></figcaption>
@@ -80,7 +80,7 @@
   </div>
   <div class="popup popup_type_update-avatar">
     <div class="popup__container popup__container_dialog">
-      <button class="popup__btn-close hover hover_button_basic" aria-label="Закрыть окно"></button>
+      <button class="popup__btn-close" aria-label="Закрыть окно"></button>
       <h3 class="popup__title">Обновить аватар</h3>
       <form class="form" name="update-avatar" action="#" novalidate>
         <input class="form__input form__input_type_avatar-url" type="url" id="avatar-url"
@@ -92,7 +92,7 @@
   </div>
   <div class="popup popup_type_confirm">
     <div class="popup__container popup__container_dialog">
-      <button class="popup__btn-close hover hover_button_basic" aria-label="Закрыть окно"></button>
+      <button class="popup__btn-close" aria-label="Закрыть окно"></button>
       <h3 class="popup__title">Вы уверены?</h3>
       <button class="popup__btn" type="button">Да</button>
     </div>

@@ -12,4 +12,10 @@
   background-position: center;
   background-size: 18px 19px;
   background-repeat: no-repeat;
+  transition: opacity .3s ease;
+  cursor: pointer;
+}
+
+.gallery__delete:hover {
+  opacity: .6;
 }

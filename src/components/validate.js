@@ -14,13 +14,9 @@ function toggleButtonState(buttonElement, isActive, config) {
   if (isActive) {
     buttonElement.disabled = false;
     buttonElement.classList.remove(config.inactiveButtonClass);
-    buttonElement.classList.add('hover');
-    buttonElement.classList.add('hover_button_save');
   } else {
     buttonElement.disabled = 'disabled';
     buttonElement.classList.add(config.inactiveButtonClass);
-    buttonElement.classList.remove('hover');
-    buttonElement.classList.remove('hover_button_save');
   }
 }
 

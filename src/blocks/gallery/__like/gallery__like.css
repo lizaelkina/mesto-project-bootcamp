@@ -9,5 +9,11 @@
   background-position: center;
   background-size: 22px 19px;
   background-repeat: no-repeat;
-  transition: background-image .15s linear;
+  transition: background-image .15s linear, transform .15s;
+  cursor: pointer;
+}
+
+.gallery__like:hover {
+  opacity: .5;
+  transform: scale(1.2);
 }
