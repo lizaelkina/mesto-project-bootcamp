@@ -2,23 +2,23 @@ import {page} from './utils';
 
 // открытие попапов
 
-let closePopupOnEscapeListener;
+function closePopupByEsc(event) {
+  if (event.key === 'Escape') {
+    const openedPopup = page.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
+}
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  closePopupOnEscapeListener = event => {
-    if (event.key === 'Escape') {
-      closePopup(popup);
-    }
-  }
-  document.addEventListener('keyup', closePopupOnEscapeListener);
+  document.addEventListener('keydown', closePopupByEsc);
 }
 
 // закрытие попапов
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  document.removeEventListener('keyup', closePopupOnEscapeListener);
+  document.addEventListener('keydown', closePopupByEsc);
 }
 
 const popupList = page.querySelectorAll('.popup');
