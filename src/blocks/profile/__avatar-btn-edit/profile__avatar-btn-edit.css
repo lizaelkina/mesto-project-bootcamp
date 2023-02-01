@@ -1,0 +1,31 @@
+.profile__avatar-btn-edit {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  width: 120px;
+  height: 120px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.profile__avatar-btn-edit:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--background-color);
+  opacity: .1;
+  transition: opacity .3s ease;
+}
+
+.profile__avatar-btn-edit:hover:before {
+  opacity: .8;
+  background-image: url(../../../images/pencil.svg);
+  background-position: center;
+  background-size: 26px 26px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
