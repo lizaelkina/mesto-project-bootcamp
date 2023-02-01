@@ -1,0 +1,12 @@
+.gallery__caption {
+  box-sizing: border-box;
+  padding: 21px 20px;
+  display: grid;
+  grid-template-columns: 1fr 22px;
+  grid-template-areas:
+    "gallery__text gallery__like"
+    "gallery__text gallery__counter";
+  align-items: center;
+  column-gap: 30px;
+  row-gap: 3px;
+}
