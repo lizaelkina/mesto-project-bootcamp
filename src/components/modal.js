@@ -1,13 +1,13 @@
 import {page} from './utils';
 
-// открытие попапов
-
 function closePopupByEsc(event) {
   if (event.key === 'Escape') {
     const openedPopup = page.querySelector('.popup_opened');
     closePopup(openedPopup);
   }
 }
+
+// открытие попапов
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -26,7 +26,7 @@ const popupList = page.querySelectorAll('.popup');
 popupList.forEach(popup => {
   const buttonClosePopup = popup.querySelector('.popup__btn-close');
   buttonClosePopup.addEventListener('click', () => closePopup(popup));
-  popup.addEventListener('click', (event) => {
+  popup.addEventListener('mousedown', (event) => {
     if (event.target === popup) {
       closePopup(popup);
     }
