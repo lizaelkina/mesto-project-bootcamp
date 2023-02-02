@@ -8,6 +8,8 @@ const cardTemplate = document.querySelector('#card-item-template').content;
 const popupViewPhoto = page.querySelector('.popup_type_viewer-photo');
 const popupViewImage = popupViewPhoto.querySelector('.viewer__photo');
 const popupViewTitle = popupViewPhoto.querySelector('.viewer__caption');
+const popupConfirm = page.querySelector('.popup_type_confirm');
+
 
 function createCardElement(cardData) {
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
@@ -38,7 +40,15 @@ function createCardElement(cardData) {
     cardElement.remove();
   }
 
-  buttonDeleteCard.addEventListener('click', deleteCard);
+  function openConfirmPopup() {
+    openPopup(popupConfirm, confirmed => {
+      if (confirmed) {
+        deleteCard();
+      }
+    });
+  }
+
+  buttonDeleteCard.addEventListener('click', openConfirmPopup);
 
   return cardElement;
 }

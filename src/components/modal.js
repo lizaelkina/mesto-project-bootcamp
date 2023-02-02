@@ -9,16 +9,33 @@ function closePopupByEsc(event) {
 
 // открытие попапов
 
-function openPopup(popup) {
+function confirmPopup() {
+  const popup = page.querySelector('.popup_opened');
+  closePopup(popup, true);
+}
+
+function openPopup(popup, callback) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupByEsc);
+  popup.callback = callback;
+  const buttonConfirm = popup.querySelector('.popup__btn');
+  if (buttonConfirm !== null) {
+    buttonConfirm.addEventListener('click', confirmPopup);
+  }
 }
 
 // закрытие попапов
 
-function closePopup(popup) {
+function closePopup(popup, confirmed = false) {
   popup.classList.remove('popup_opened');
-  document.addEventListener('keydown', closePopupByEsc);
+  document.removeEventListener('keydown', closePopupByEsc);
+  const buttonConfirm = popup.querySelector('.popup__btn');
+  if (buttonConfirm !== null) {
+    buttonConfirm.removeEventListener('click', confirmPopup);
+  }
+  if (popup.callback !== undefined) {
+    popup.callback(confirmed);
+  }
 }
 
 const popupList = page.querySelectorAll('.popup');
