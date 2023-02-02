@@ -12,10 +12,11 @@
   background-position: center;
   background-size: 18px 19px;
   background-repeat: no-repeat;
-  transition: opacity .3s ease;
+  transition: opacity .3s ease, transform .15s;
   cursor: pointer;
 }
 
 .card__delete:hover {
   opacity: .6;
+  transform: scale(1.2);
 }

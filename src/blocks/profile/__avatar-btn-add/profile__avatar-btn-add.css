@@ -18,10 +18,10 @@
   width: 100%;
   background-color: var(--background-color);
   opacity: .1;
-  transition: opacity .3s ease;
+  transition: opacity .6s ease;
 }
 
-.profile__avatar-btn-add:hover:before {
+.profile__avatar-btn-add:hover::before {
   opacity: .8;
   background-image: url(../../../images/pencil.svg);
   background-position: center;
