@@ -33,6 +33,4 @@ const dataCards = [
   }
 ];
 
-const dataAvatar = {link: avatar};
-
-export {dataCards, dataAvatar};
+export {dataCards, avatar};
