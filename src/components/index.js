@@ -1,9 +1,9 @@
-import './pages/index.css';
-import {configSelectorForm, content, galleryCardList, page} from './components/utils';
-import {avatar} from './components/data';
-import {closePopup, openPopup,} from './components/modal';
-import {createCardElement, fillGallery} from './components/card';
-import {clearErrorsOfForm, enableValidation, toggleButtonState} from './components/validate';
+import '../pages/index.css';
+import {configSelectorForm, content, galleryCardList, page} from './utils';
+import {avatar} from './data';
+import {closePopup, openPopup,} from './modal';
+import {createCardElement, fillGallery} from './card';
+import {clearErrorsOfForm, enableValidation, toggleButtonState} from './validate';
 
 // вставка изображений
 fillGallery();
