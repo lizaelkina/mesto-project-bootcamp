@@ -12,9 +12,8 @@
   </header>
   <main class="content">
     <section class="profile content__profile" aria-label="Профиль пользователя">
-      <button class="profile__avatar-btn-edit" type="button"
+      <button class="profile__avatar-btn-add" type="button"
               aria-label="Редактировать аватар профиля">
-        <img class="profile__avatar" src="<%=require('./images/avatar.jpeg')%>" alt="Аватар профиля">
       </button>
       <div class="profile__info">
         <h1 class="profile__title">Лиза Петкова</h1>
@@ -30,6 +29,9 @@
     </section>
   </main>
   <footer class="footer page__footer">&copy; 2023 Mesto Russia</footer>
+  <template id="avatar-item-template">
+    <img class="profile__avatar" src="" alt="">
+  </template>
   <template id="card-item-template">
     <li class="card">
       <img class="card__photo" src="#" alt="#">

@@ -3,6 +3,7 @@ import {configSelectorForm, content, galleryCardList, page} from './components/u
 import {closePopup, openPopup,} from './components/modal';
 import {createCardElement, fillGallery} from './components/card';
 import {clearErrorsOfForm, enableValidation, toggleButtonState} from './components/validate';
+import {dataAvatar} from './components/data';
 
 // вставка изображений
 fillGallery();
@@ -39,10 +40,12 @@ function saveProfile(event) {
 // попап редактирования аватара
 
 const popupAvatar = page.querySelector('.popup_type_update-avatar');
-const buttonEditAvatar = content.querySelector('.profile__avatar-btn-edit');
+const buttonEditAvatar = content.querySelector('.profile__avatar-btn-add');
 const formUpdateAvatar = popupAvatar.querySelector('.form');
-// const avatarUrlInput = popupAvatar.querySelector('.form__input_type_avatar-url');
+const avatarUrlInput = popupAvatar.querySelector('.form__input_type_avatar-url');
 const buttonSaveAvatar = popupAvatar.querySelector('.form__btn-save');
+const avatarTemplate = document.querySelector('#avatar-item-template').content;
+const avatarImage = avatarTemplate.querySelector('.profile__avatar');
 
 function openEditAvatarPopup() {
   formUpdateAvatar.reset();
@@ -51,10 +54,24 @@ function openEditAvatarPopup() {
   openPopup(popupAvatar);
 }
 
-// function editAvatarPopup(event) {
-//   event.preventDefault();
-//   const url = avatarUrlInput.value;
-// }
+function createAvatarElement(avatarData) {
+  avatarImage.src = avatarData.link;
+  avatarImage.setAttribute('alt', 'Аватар профиля');
+  return avatarImage;
+}
+
+function fillAvatar() {
+  const avatarElement = createAvatarElement(dataAvatar);
+  buttonEditAvatar.append(avatarElement);
+}
+
+fillAvatar();
+
+function saveAvatar(event) {
+  event.preventDefault();
+  avatarImage.src = avatarUrlInput.value;
+  closePopup(popupAvatar);
+}
 
 // попап добавления изображений
 
@@ -93,6 +110,9 @@ formSaveProfile.addEventListener('submit', saveProfile);
 
 // слушатель на открытие попапа для редактирования аватара
 buttonEditAvatar.addEventListener('click', openEditAvatarPopup);
+
+// слушатель на добавление аватара
+formUpdateAvatar.addEventListener('submit', saveAvatar);
 
 // слушатель на открытие попапа для добавление изображения
 buttonAddPhoto.addEventListener('click', openAddPhotoPopup);
