@@ -14,7 +14,9 @@
   cursor: pointer;
 }
 
-.card__like:hover {
-  opacity: .5;
-  transform: scale(1.2);
+@media (any-hover: hover) {
+  .card__like:hover {
+    opacity: .5;
+    transform: scale(1.2);
+  }
 }
