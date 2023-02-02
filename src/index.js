@@ -36,6 +36,26 @@ function saveProfile(event) {
   closePopup(popupProfile);
 }
 
+// попап редактирования аватара
+
+const popupAvatar = page.querySelector('.popup_type_update-avatar');
+const buttonEditAvatar = content.querySelector('.profile__avatar-btn-edit');
+const formUpdateAvatar = popupAvatar.querySelector('.form');
+// const avatarUrlInput = popupAvatar.querySelector('.form__input_type_avatar-url');
+const buttonSaveAvatar = popupAvatar.querySelector('.form__btn-save');
+
+function openEditAvatarPopup() {
+  formUpdateAvatar.reset();
+  clearErrorsOfForm(formUpdateAvatar, configSelectorForm);
+  toggleButtonState(buttonSaveAvatar, false, configSelectorForm);
+  openPopup(popupAvatar);
+}
+
+// function editAvatarPopup(event) {
+//   event.preventDefault();
+//   const url = avatarUrlInput.value;
+// }
+
 // попап добавления изображений
 
 const popupAddPhoto = page.querySelector('.popup_type_add-photo');
@@ -65,17 +85,20 @@ function addPhotoPopup(event) {
   closePopup(popupAddPhoto);
 }
 
-// слушатель на открытие попапа для добавление изображения
-buttonAddPhoto.addEventListener('click', openAddPhotoPopup);
-
-// слушатель на добавление изображения
-formAddPhoto.addEventListener('submit', addPhotoPopup);
-
 // слушатель на открытие попапа для редактирования профиля
 buttonEditProfile.addEventListener('click', openProfilePopup);
 
 // слушатель на редактирование профиля
 formSaveProfile.addEventListener('submit', saveProfile);
+
+// слушатель на открытие попапа для редактирования аватара
+buttonEditAvatar.addEventListener('click', openEditAvatarPopup);
+
+// слушатель на открытие попапа для добавление изображения
+buttonAddPhoto.addEventListener('click', openAddPhotoPopup);
+
+// слушатель на добавление изображения
+formAddPhoto.addEventListener('submit', addPhotoPopup);
 
 // включение валидации всех форм
 enableValidation(configSelectorForm);
