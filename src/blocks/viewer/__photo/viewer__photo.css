@@ -3,10 +3,3 @@
   max-height: 75vh;
   object-fit: contain;
 }
-
-@media (max-width: 540px) {
-  .viewer__photo {
-    max-width: 85vw;
-    max-height: 85vh;
-  }
-}
