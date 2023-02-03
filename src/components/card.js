@@ -16,7 +16,7 @@ function createCardElement(cardData) {
   const cardImage = cardElement.querySelector('.card__photo');
   const cardTextElement = cardElement.querySelector('.card__text');
   const buttonLikeCard = cardElement.querySelector('.card__btn-like');
-  const buttonDeleteCard = cardElement.querySelector('.card__delete');
+  const buttonDeleteCard = cardElement.querySelector('.card__btn-delete');
   cardImage.src = cardData.link;
   cardImage.setAttribute('alt', cardData.name);
   cardTextElement.textContent = cardData.name;
