@@ -1,4 +1,4 @@
-.card__counter {
+.card__like-counter {
   grid-area: card__counter;
   justify-self: center;
   margin: 0;

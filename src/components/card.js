@@ -15,7 +15,7 @@ function createCardElement(cardData) {
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
   const cardImage = cardElement.querySelector('.card__photo');
   const cardTextElement = cardElement.querySelector('.card__text');
-  const buttonLikeCard = cardElement.querySelector('.card__like');
+  const buttonLikeCard = cardElement.querySelector('.card__btn-like');
   const buttonDeleteCard = cardElement.querySelector('.card__delete');
   cardImage.src = cardData.link;
   cardImage.setAttribute('alt', cardData.name);
@@ -31,7 +31,7 @@ function createCardElement(cardData) {
   cardImage.addEventListener('click', openViewPhotoPopup);
 
   function toggleLike() {
-    buttonLikeCard.classList.toggle('card__like_active');
+    buttonLikeCard.classList.toggle('card__btn-like_active');
   }
 
   buttonLikeCard.addEventListener('click', toggleLike);

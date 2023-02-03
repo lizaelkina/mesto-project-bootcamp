@@ -1,4 +1,4 @@
-.popup__btn {
+.popup__btn-confirm {
   margin-top: 32px;
   padding: 0;
   width: 100%;
@@ -23,7 +23,7 @@
 }
 
 @media (max-width: 720px) {
-  .popup__btn {
+  .popup__btn-confirm {
     height: 46px;
     font-size: clamp(14px, 3vw, 18px);
     line-height: clamp(17px, 3.5vw, 22px);
@@ -32,7 +32,7 @@
 
 
 @media (max-width: 540px) {
-  .popup__btn {
+  .popup__btn-confirm {
     max-width: 238px;
     min-height: 46px;
     font-size: 14px;
@@ -40,6 +40,6 @@
   }
 }
 
-.popup__btn:hover {
+.popup__btn-confirm:hover {
   opacity: .8;
 }
