@@ -21,10 +21,10 @@
 .gallery__cards{align-items:center;-moz-column-gap:17px;column-gap:17px;display:grid;grid-template-columns:repeat(3,1fr);list-style-type:none;margin:0;padding:0;row-gap:20px}@media (max-width:960px){.gallery__cards{grid-template-columns:repeat(2,1fr)}}@media (max-width:620px){.gallery__cards{grid-template-columns:1fr}}
 .card{background-color:var(--background-element);border-radius:10px;overflow:hidden;position:relative}
 .card__photo{aspect-ratio:1;cursor:pointer;display:block;-o-object-fit:cover;object-fit:cover;width:100%}
-.card__delete{aspect-ratio:18/19;background-color:transparent;background-image:url(ce3b64935accf9b8212e.svg);background-position:50%;background-repeat:no-repeat;background-size:18px 19px;border:0;cursor:pointer;max-width:18px;padding:0;position:absolute;right:20px;top:20px;transition:opacity .3s ease,transform .15s;width:100%}.card__delete:hover{opacity:.6;transform:scale(1.2)}
-.card__caption{align-items:center;box-sizing:border-box;-moz-column-gap:30px;column-gap:30px;display:grid;grid-template-areas:"card__text card__like" "card__text card__counter";grid-template-columns:1fr 22px;padding:21px 20px;row-gap:3px}
+.card__btn-delete{aspect-ratio:18/19;background-color:transparent;background-image:url(ce3b64935accf9b8212e.svg);background-position:50%;background-repeat:no-repeat;background-size:18px 19px;border:0;cursor:pointer;max-width:18px;padding:0;position:absolute;right:20px;top:20px;transition:opacity .3s ease,transform .15s;width:100%}.card__btn-delete:hover{opacity:.6;transform:scale(1.2)}
+.card__caption{align-items:center;box-sizing:border-box;-moz-column-gap:10px;column-gap:10px;display:grid;grid-template-areas:"card__text card__like" "card__text card__counter";grid-template-columns:1fr 40px;padding:21px 10px 20px 20px;row-gap:3px}
 .card__text{color:var(--text-element);font-family:var(--font-family);font-size:24px;font-style:normal;font-weight:900;grid-area:card__text;line-height:29px;margin:0;overflow:hidden;padding:0;text-overflow:ellipsis;white-space:nowrap}
-.card__btn-like{aspect-ratio:22/19;background-color:transparent;background-image:url(1ad06e85f169668a1f36.svg);background-position:50%;background-repeat:no-repeat;background-size:22px 19px;border:0;cursor:pointer;grid-area:card__like;max-width:22px;padding:0;transition:background-image .15s linear,transform .15s;width:100%}@media (any-hover:hover){.card__btn-like:hover{opacity:.5;transform:scale(1.2)}}
+.card__btn-like{aspect-ratio:22/19;background-color:transparent;background-image:url(1ad06e85f169668a1f36.svg);background-position:50%;background-repeat:no-repeat;background-size:22px 19px;border:0;cursor:pointer;grid-area:card__like;justify-self:center;max-width:22px;padding:0;transition:background-image .15s linear,transform .15s;width:100%}@media (any-hover:hover){.card__btn-like:hover{opacity:.5;transform:scale(1.2)}}
 .card__btn-like_active{background-image:url(35948469632d0421d697.svg)}
 .card__like-counter{color:var(--text-element);font-family:var(--font-family);font-size:13px;font-style:normal;font-weight:400;grid-area:card__counter;justify-self:center;line-height:16px;margin:0;padding:0}
 .footer{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:var(--text-footer);font-family:var(--font-family);font-size:18px;font-style:normal;font-weight:400;line-height:22px}@media (max-width:540px){.footer{font-size:14px;line-height:17px}}
@@ -44,6 +44,6 @@
 .form__btn-save{margin-top:18px}@media (max-width:540px){.form__btn-save{margin-top:15px}}
 .form__btn-save_disabled{background-color:var(--background-element);border:1px solid #000;color:var(--text-element);cursor:default;opacity:.2}
 .viewer{display:flex;flex-direction:column;gap:10px;margin:0;padding:0}
-.viewer__photo{max-height:75vh;max-width:75vw;-o-object-fit:contain;object-fit:contain}@media (max-width:540px){.viewer__photo{max-height:85vh;max-width:85vw}}
+.viewer__photo{max-height:75vh;max-width:75vw;-o-object-fit:contain;object-fit:contain}
 .viewer__caption{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:var(--text-color);font-family:var(--font-family);font-size:12px;font-style:normal;font-weight:400;line-height:15px;margin:0;max-width:80vw;padding:0}
 
