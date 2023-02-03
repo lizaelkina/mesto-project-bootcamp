@@ -1,9 +1,9 @@
 .card__btn-like {
   grid-area: card__like;
   padding: 0;
-  max-width: 22px;
+  max-width: 40px;
   width: 100%;
-  aspect-ratio: 22 / 19;
+  aspect-ratio: 40 / 19;
   border: 0;
   background-color: transparent;
   background-image: url(../../../images/like.svg);
