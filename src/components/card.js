@@ -1,6 +1,6 @@
-import {dataCards} from './data';
 import {galleryCardList, page} from './utils';
 import {openPopup} from './modal';
+import {getCards} from "./api";
 
 // вставка изображений
 
@@ -53,11 +53,14 @@ function createCardElement(cardData) {
   return cardElement;
 }
 
-function fillGallery() {
-  dataCards.forEach(card => {
-    const cardElement = createCardElement(card);
-    galleryCardList.append(cardElement);
-  })
+function loadCards() {
+  getCards()
+      .then(function (cards) {
+        cards.forEach(function (card) {
+          const cardElement = createCardElement(card);
+          galleryCardList.append(cardElement);
+        })
+      })
 }
 
-export {createCardElement, fillGallery};
+export {createCardElement, loadCards};

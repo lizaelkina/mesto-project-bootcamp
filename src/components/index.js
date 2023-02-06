@@ -2,11 +2,8 @@ import '../pages/index.css';
 import {getUserInfo} from './api';
 import {configSelectorForm, content, galleryCardList, page} from './utils';
 import {closePopup, openPopup,} from './modal';
-import {createCardElement, fillGallery} from './card';
+import {createCardElement, loadCards} from './card';
 import {clearErrorsOfForm, enableValidation, toggleButtonState} from './validate';
-
-// вставка изображений
-fillGallery();
 
 // попап редактирования профиля
 
@@ -110,6 +107,9 @@ function loadUserProfile() {
 
 // загрузка данных пользователя
 loadUserProfile();
+
+// загрузка карточек в галерею
+loadCards();
 
 // слушатель на открытие попапа для редактирования профиля
 buttonEditProfile.addEventListener('click', openProfilePopup);

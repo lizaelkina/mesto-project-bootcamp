@@ -15,4 +15,13 @@ function getUserInfo() {
   })
 }
 
-export {getUserInfo}
+function getCards() {
+  return fetch(`${config.url}/cards`, {
+    method: 'GET',
+    headers: config.headers
+  }).then(response => {
+    return response.json();
+  })
+}
+
+export {getUserInfo, getCards}
