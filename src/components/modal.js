@@ -7,12 +7,12 @@ function closePopupByEsc(event) {
   }
 }
 
-// открытие попапов
-
 function confirmPopup() {
   const popup = page.querySelector('.popup_opened');
   closePopup(popup, true);
 }
+
+// открытие попапов
 
 function openPopup(popup, callback) {
   popup.classList.add('popup_opened');
