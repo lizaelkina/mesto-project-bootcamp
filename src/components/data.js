@@ -4,7 +4,6 @@ import kazan from '/src/images/kazan.jpg';
 import vyborg from '/src/images/vyborg.jpeg';
 import pskov from '/src/images/pskov.jpg';
 import korela from '/src/images/korela.jpeg';
-import avatar from '/src/images/avatar.jpeg';
 
 const dataCards = [
   {
@@ -33,4 +32,4 @@ const dataCards = [
   }
 ];
 
-export {dataCards, avatar};
+export {dataCards};

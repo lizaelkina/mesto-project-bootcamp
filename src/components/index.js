@@ -1,6 +1,6 @@
 import '../pages/index.css';
+import {getUserInfo} from './api';
 import {configSelectorForm, content, galleryCardList, page} from './utils';
-import {avatar} from './data';
 import {closePopup, openPopup,} from './modal';
 import {createCardElement, fillGallery} from './card';
 import {clearErrorsOfForm, enableValidation, toggleButtonState} from './validate';
@@ -28,12 +28,18 @@ function openProfilePopup() {
   openPopup(popupProfile);
 }
 
+function setProfileName(name) {
+  profileNameElement.textContent = name;
+}
+
+function setProfileDescription(description) {
+  profileDescriptionElement.textContent = description;
+}
+
 function saveProfile(event) {
   event.preventDefault();
-  const name = profileNameInput.value;
-  const description = profileDescriptionInput.value;
-  profileNameElement.textContent = name;
-  profileDescriptionElement.textContent = description;
+  setProfileName(profileNameInput.value);
+  setProfileDescription(profileDescriptionInput.value);
   closePopup(popupProfile);
 }
 
@@ -57,8 +63,6 @@ function openEditAvatarPopup() {
 function setAvatar(url) {
   avatarImage.src = url;
 }
-
-setAvatar(avatar);
 
 function saveAvatar(event) {
   event.preventDefault();
@@ -94,6 +98,18 @@ function addPhotoPopup(event) {
   galleryCardList.prepend(cardElement);
   closePopup(popupAddPhoto);
 }
+
+function loadUserProfile() {
+  getUserInfo()
+      .then(userInfo => {
+        setAvatar(userInfo.avatar);
+        setProfileName(userInfo.name);
+        setProfileDescription(userInfo.about);
+      });
+}
+
+// загрузка данных пользователя
+loadUserProfile();
 
 // слушатель на открытие попапа для редактирования профиля
 buttonEditProfile.addEventListener('click', openProfilePopup);
