@@ -3,5 +3,5 @@
   background-color: var(--background-element);
   color: var(--text-element);
   opacity: .2;
-  cursor: default;
+  pointer-events: none;
 }
