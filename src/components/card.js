@@ -1,6 +1,6 @@
 import {page} from './utils';
 import {openPopup} from './modal';
-import {deleteCard} from "./api";
+import {deleteCard, deleteLike, putLike} from "./api";
 
 // формирование элемента карточки в DOM
 
@@ -31,8 +31,26 @@ function createCardElement(cardData) {
 
   cardImage.addEventListener('click', openViewPhotoPopup);
 
+  if (cardData.isLiked) {
+    buttonLikeCard.classList.add('card__btn-like_active');
+  }
+
   function toggleLikeElement() {
-    buttonLikeCard.classList.toggle('card__btn-like_active');
+    if (cardData.isLiked) {
+      deleteLike(cardData._id)
+          .then((card) => {
+            cardData.isLiked = false;
+            buttonLikeCard.classList.remove('card__btn-like_active');
+            counterLikesCard.textContent = card.likes.length;
+          })
+    } else {
+      putLike(cardData._id)
+          .then((card) => {
+            cardData.isLiked = true;
+            buttonLikeCard.classList.add('card__btn-like_active');
+            counterLikesCard.textContent = card.likes.length;
+          })
+    }
   }
 
   buttonLikeCard.addEventListener('click', toggleLikeElement);

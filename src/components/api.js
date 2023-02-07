@@ -71,8 +71,8 @@ export function deleteCard(cardId) {
   })
 }
 
-export function putLike(CardId) {
-  return fetch(`${config.url}/cards/likes/${CardId}`, {
+export function putLike(cardId) {
+  return fetch(`${config.url}/cards/likes/${cardId}`, {
     method: 'PUT',
     headers: config.headers
   }).then(response => {
@@ -80,8 +80,8 @@ export function putLike(CardId) {
   })
 }
 
-export function deleteLike(CardId) {
-  return fetch(`${config.url}/cards/likes/${CardId}`, {
+export function deleteLike(cardId) {
+  return fetch(`${config.url}/cards/likes/${cardId}`, {
     method: 'DELETE',
     headers: config.headers
   }).then(response => {

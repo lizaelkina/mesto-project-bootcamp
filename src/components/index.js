@@ -111,6 +111,9 @@ function loadUserProfile() {
             .then(cards => {
               cards.forEach(card => {
                 card.isMy = card.owner._id === userInfo._id;
+                card.isLiked = card.likes.some((like) => {
+                  return like._id === userInfo._id;
+                })
                 const cardElement = createCardElement(card);
                 galleryCardList.append(cardElement);
               })
