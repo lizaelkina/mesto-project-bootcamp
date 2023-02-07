@@ -1,5 +1,5 @@
 import '../pages/index.css';
-import {addCard, getUserInfo, updateProfile} from './api';
+import {addCard, getUserInfo, updateAvatar, updateProfile} from './api';
 import {configSelectorForm, content, galleryCardList, page} from './utils';
 import {closePopup, openPopup,} from './modal';
 import {createCardElement, loadCards} from './card';
@@ -66,8 +66,11 @@ function setAvatar(url) {
 
 function saveAvatar(event) {
   event.preventDefault();
-  setAvatar(avatarUrlInput.value);
-  closePopup(popupAvatar);
+  updateAvatar(avatarUrlInput.value)
+      .then(avatar => {
+        setAvatar(avatar.avatar);
+        closePopup(popupAvatar);
+      })
 }
 
 // попап добавления изображений

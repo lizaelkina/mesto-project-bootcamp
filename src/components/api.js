@@ -1,5 +1,3 @@
-import {closePopup} from "./modal";
-
 const config = {
   url: 'https://mesto.nomoreparties.co/v1/wbf-cohort-5',
   headers: {
@@ -39,6 +37,18 @@ function updateProfile(name, description) {
   })
 }
 
+function updateAvatar(url) {
+  return fetch(`${config.url}/users/me/avatar`, {
+    method: 'PATCH',
+    headers: config.headers,
+    body: JSON.stringify({
+      avatar: url
+    })
+  }).then(response => {
+    return response.json();
+  })
+}
+
 function addCard(name, url) {
   return fetch(`${config.url}/cards`, {
     method: 'POST',
@@ -52,7 +62,7 @@ function addCard(name, url) {
   })
 }
 
-export {getUserInfo, getCards, updateProfile, addCard}
+export {getUserInfo, getCards, updateProfile, updateAvatar, addCard}
 
 
 
