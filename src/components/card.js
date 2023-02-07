@@ -2,7 +2,7 @@ import {galleryCardList, page} from './utils';
 import {openPopup} from './modal';
 import {getCards} from "./api";
 
-// вставка изображений
+// формирование элемента карточки в DOM
 
 const cardTemplate = document.querySelector('#card-item-template').content;
 const popupViewPhoto = page.querySelector('.popup_type_viewer-photo');

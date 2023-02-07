@@ -1,5 +1,5 @@
 import '../pages/index.css';
-import {getUserInfo, updateProfile} from './api';
+import {addCard, getUserInfo, updateProfile} from './api';
 import {configSelectorForm, content, galleryCardList, page} from './utils';
 import {closePopup, openPopup,} from './modal';
 import {createCardElement, loadCards} from './card';
@@ -36,7 +36,7 @@ function setProfileDescription(description) {
 function saveProfile(event) {
   event.preventDefault();
   updateProfile(profileNameInput.value, profileDescriptionInput.value)
-      .then(function (profile) {
+      .then(profile => {
         setProfileName(profile.name);
         setProfileDescription(profile.about);
         closePopup(popupProfile);
@@ -88,17 +88,15 @@ function openAddPhotoPopup() {
 
 function addPhotoPopup(event) {
   event.preventDefault();
-  const title = photoNameInput.value;
-  const url = photoUrlInput.value;
-  const cardData = {
-    name: title,
-    link: url
-  }
-  const cardElement = createCardElement(cardData);
-  galleryCardList.prepend(cardElement);
-  closePopup(popupAddPhoto);
+  addCard(photoNameInput.value, photoUrlInput.value)
+      .then(card => {
+        const cardElement = createCardElement(card);
+        galleryCardList.prepend(cardElement);
+        closePopup(popupAddPhoto);
+      });
 }
 
+// получение данных пользователя
 function loadUserProfile() {
   getUserInfo()
       .then(userInfo => {

@@ -1,3 +1,5 @@
+import {closePopup} from "./modal";
+
 const config = {
   url: 'https://mesto.nomoreparties.co/v1/wbf-cohort-5',
   headers: {
@@ -37,4 +39,20 @@ function updateProfile(name, description) {
   })
 }
 
-export {getUserInfo, getCards, updateProfile}
+function addCard(name, url) {
+  return fetch(`${config.url}/cards`, {
+    method: 'POST',
+    headers: config.headers,
+    body: JSON.stringify({
+      name: name,
+      link: url
+    })
+  }).then(response => {
+    return response.json();
+  })
+}
+
+export {getUserInfo, getCards, updateProfile, addCard}
+
+
+
