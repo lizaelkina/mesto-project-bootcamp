@@ -1,4 +1,4 @@
-.form__btn-save_disabled {
+.popup__btn_disabled {
   border: 1px solid rgba(0, 0, 0, 1);
   background-color: var(--background-element);
   color: var(--text-element);

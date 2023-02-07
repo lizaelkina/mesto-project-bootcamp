@@ -12,7 +12,7 @@ const buttonEditProfile = content.querySelector('.profile__btn-edit');
 const formSaveProfile = popupProfile.querySelector('.form');
 const profileNameInput = formSaveProfile.querySelector('.form__input_type_profile-name');
 const profileDescriptionInput = formSaveProfile.querySelector('.form__input_type_profile-description');
-const buttonSaveProfile = popupProfile.querySelector('.form__btn-save')
+const buttonSaveProfile = popupProfile.querySelector('.popup__btn_type_form')
 const profileNameElement = content.querySelector('.profile__title');
 const profileDescriptionElement = content.querySelector('.profile__subtitle');
 
@@ -50,7 +50,7 @@ const buttonEditAvatar = content.querySelector('.profile__avatar-btn-add');
 const avatarImage = content.querySelector('.profile__avatar');
 const formUpdateAvatar = popupAvatar.querySelector('.form');
 const avatarUrlInput = popupAvatar.querySelector('.form__input_type_avatar-url');
-const buttonSaveAvatar = popupAvatar.querySelector('.form__btn-save');
+const buttonSaveAvatar = popupAvatar.querySelector('.popup__btn_type_form');
 
 
 function openEditAvatarPopup() {
@@ -80,7 +80,7 @@ const buttonAddPhoto = content.querySelector('.profile__btn-add');
 const formAddPhoto = popupAddPhoto.querySelector('.form');
 const photoNameInput = popupAddPhoto.querySelector('.form__input_type_photo-name');
 const photoUrlInput = popupAddPhoto.querySelector('.form__input_type_photo-url');
-const buttonSavePhoto = popupAddPhoto.querySelector('.form__btn-save');
+const buttonSavePhoto = popupAddPhoto.querySelector('.popup__btn_type_form');
 
 function openAddPhotoPopup() {
   formAddPhoto.reset();

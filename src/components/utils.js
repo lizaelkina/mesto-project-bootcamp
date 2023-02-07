@@ -6,8 +6,8 @@ const configSelectorForm = {
   inputSelector: '.form__input',
   inputErrorClass: 'form__input_error',
   textErrorClass: 'form__error_active',
-  submitButtonSelector: '.form__btn-save',
-  inactiveButtonClass: 'form__btn-save_disabled'
+  submitButtonSelector: '.popup__btn_type_form',
+  inactiveButtonClass: 'popup__btn_disabled'
 }
 
 const galleryCardList = content.querySelector('.gallery__cards');
