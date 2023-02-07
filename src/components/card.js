@@ -1,6 +1,5 @@
-import {galleryCardList, page} from './utils';
+import {page} from './utils';
 import {openPopup} from './modal';
-import {getCards} from "./api";
 
 // формирование элемента карточки в DOM
 
@@ -9,7 +8,6 @@ const popupViewPhoto = page.querySelector('.popup_type_viewer-photo');
 const popupViewImage = popupViewPhoto.querySelector('.viewer__photo');
 const popupViewTitle = popupViewPhoto.querySelector('.viewer__caption');
 const popupConfirm = page.querySelector('.popup_type_confirm');
-
 
 function createCardElement(cardData) {
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
@@ -32,37 +30,31 @@ function createCardElement(cardData) {
 
   cardImage.addEventListener('click', openViewPhotoPopup);
 
-  function toggleLike() {
+  function toggleLikeElement() {
     buttonLikeCard.classList.toggle('card__btn-like_active');
   }
 
-  buttonLikeCard.addEventListener('click', toggleLike);
+  buttonLikeCard.addEventListener('click', toggleLikeElement);
 
-  function deleteCard() {
+  function deleteCardElement() {
     cardElement.remove();
   }
 
   function openConfirmPopup() {
     openPopup(popupConfirm, confirmed => {
       if (confirmed) {
-        deleteCard();
+        deleteCardElement();
       }
     });
   }
 
-  buttonDeleteCard.addEventListener('click', openConfirmPopup);
+  if (cardData.isMy) {
+    buttonDeleteCard.addEventListener('click', openConfirmPopup);
+  } else {
+    buttonDeleteCard.remove();
+  }
 
   return cardElement;
 }
 
-function loadCards() {
-  getCards()
-      .then(cards => {
-        cards.forEach(card => {
-          const cardElement = createCardElement(card);
-          galleryCardList.append(cardElement);
-        })
-      })
-}
-
-export {createCardElement, loadCards};
+export {createCardElement};

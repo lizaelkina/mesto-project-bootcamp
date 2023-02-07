@@ -1,8 +1,8 @@
 import '../pages/index.css';
-import {addCard, getUserInfo, updateAvatar, updateProfile} from './api';
+import {addCard, getCards, getUserInfo, updateAvatar, updateProfile} from './api';
 import {configSelectorForm, content, galleryCardList, page} from './utils';
 import {closePopup, openPopup,} from './modal';
-import {createCardElement, loadCards} from './card';
+import {createCardElement} from './card';
 import {clearErrorsOfForm, enableValidation, toggleButtonState} from './validate';
 
 // попап редактирования профиля
@@ -106,14 +106,20 @@ function loadUserProfile() {
         setAvatar(userInfo.avatar);
         setProfileName(userInfo.name);
         setProfileDescription(userInfo.about);
+
+        getCards()
+            .then(cards => {
+              cards.forEach(card => {
+                card.isMy = card.owner._id === userInfo._id;
+                const cardElement = createCardElement(card);
+                galleryCardList.append(cardElement);
+              })
+            })
       });
 }
 
 // загрузка данных пользователя
 loadUserProfile();
-
-// загрузка карточек в галерею
-loadCards();
 
 // слушатель на открытие попапа для редактирования профиля
 buttonEditProfile.addEventListener('click', openProfilePopup);
