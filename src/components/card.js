@@ -1,5 +1,6 @@
 import {page} from './utils';
 import {openPopup} from './modal';
+import {deleteCard} from "./api";
 
 // формирование элемента карточки в DOM
 
@@ -37,7 +38,10 @@ function createCardElement(cardData) {
   buttonLikeCard.addEventListener('click', toggleLikeElement);
 
   function deleteCardElement() {
-    cardElement.remove();
+    deleteCard(cardData._id)
+        .then(() => {
+          cardElement.remove();
+        })
   }
 
   function openConfirmPopup() {

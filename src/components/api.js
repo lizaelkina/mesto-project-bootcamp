@@ -6,7 +6,7 @@ const config = {
   }
 }
 
-function getUserInfo() {
+export function getUserInfo() {
   return fetch(`${config.url}/users/me`, {
     method: 'GET',
     headers: config.headers
@@ -15,7 +15,7 @@ function getUserInfo() {
   })
 }
 
-function getCards() {
+export function getCards() {
   return fetch(`${config.url}/cards`, {
     method: 'GET',
     headers: config.headers
@@ -24,7 +24,7 @@ function getCards() {
   })
 }
 
-function updateProfile(name, description) {
+export function updateProfile(name, description) {
   return fetch(`${config.url}/users/me`, {
     method: 'PATCH',
     headers: config.headers,
@@ -37,7 +37,7 @@ function updateProfile(name, description) {
   })
 }
 
-function updateAvatar(url) {
+export function updateAvatar(url) {
   return fetch(`${config.url}/users/me/avatar`, {
     method: 'PATCH',
     headers: config.headers,
@@ -49,7 +49,7 @@ function updateAvatar(url) {
   })
 }
 
-function addCard(name, url) {
+export function addCard(name, url) {
   return fetch(`${config.url}/cards`, {
     method: 'POST',
     headers: config.headers,
@@ -62,7 +62,29 @@ function addCard(name, url) {
   })
 }
 
-export {getUserInfo, getCards, updateProfile, updateAvatar, addCard}
+export function deleteCard(cardId) {
+  return fetch(`${config.url}/cards/${cardId}`, {
+    method: 'DELETE',
+    headers: config.headers
+  }).then(response => {
+    return response.json();
+  })
+}
 
+export function putLike(CardId) {
+  return fetch(`${config.url}/cards/likes/${CardId}`, {
+    method: 'PUT',
+    headers: config.headers
+  }).then(response => {
+    return response.json();
+  })
+}
 
-
+export function deleteLike(CardId) {
+  return fetch(`${config.url}/cards/likes/${CardId}`, {
+    method: 'DELETE',
+    headers: config.headers
+  }).then(response => {
+    return response.json();
+  })
+}
