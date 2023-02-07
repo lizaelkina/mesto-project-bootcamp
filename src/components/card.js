@@ -16,10 +16,12 @@ function createCardElement(cardData) {
   const cardImage = cardElement.querySelector('.card__photo');
   const cardTextElement = cardElement.querySelector('.card__text');
   const buttonLikeCard = cardElement.querySelector('.card__btn-like');
+  const counterLikesCard = cardElement.querySelector('.card__like-counter');
   const buttonDeleteCard = cardElement.querySelector('.card__btn-delete');
   cardImage.src = cardData.link;
   cardImage.setAttribute('alt', cardData.name);
   cardTextElement.textContent = cardData.name;
+  counterLikesCard.textContent = cardData.likes.length;
 
   function openViewPhotoPopup() {
     popupViewImage.src = cardData.link;
