@@ -1,5 +1,5 @@
 import '../pages/index.css';
-import {getUserInfo} from './api';
+import {getUserInfo, updateProfile} from './api';
 import {configSelectorForm, content, galleryCardList, page} from './utils';
 import {closePopup, openPopup,} from './modal';
 import {createCardElement, loadCards} from './card';
@@ -35,9 +35,12 @@ function setProfileDescription(description) {
 
 function saveProfile(event) {
   event.preventDefault();
-  setProfileName(profileNameInput.value);
-  setProfileDescription(profileDescriptionInput.value);
-  closePopup(popupProfile);
+  updateProfile(profileNameInput.value, profileDescriptionInput.value)
+      .then(function (profile) {
+        setProfileName(profile.name);
+        setProfileDescription(profile.about);
+        closePopup(popupProfile);
+      })
 }
 
 // попап редактирования аватара

@@ -24,4 +24,17 @@ function getCards() {
   })
 }
 
-export {getUserInfo, getCards}
+function updateProfile(name, description) {
+  return fetch(`${config.url}/users/me`, {
+    method: 'PATCH',
+    headers: config.headers,
+    body: JSON.stringify({
+      name: name,
+      about: description
+    })
+  }).then(response => {
+    return response.json();
+  })
+}
+
+export {getUserInfo, getCards, updateProfile}

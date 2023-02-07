@@ -55,8 +55,8 @@ function createCardElement(cardData) {
 
 function loadCards() {
   getCards()
-      .then(function (cards) {
-        cards.forEach(function (card) {
+      .then(cards => {
+        cards.forEach(card => {
           const cardElement = createCardElement(card);
           galleryCardList.append(cardElement);
         })
