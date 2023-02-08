@@ -23,7 +23,7 @@ function loadUserProfile() {
                 const cardElement = createCardElement(card);
                 galleryCardList.append(cardElement);
               })
-            })
+            }).catch(error => console.log(error));
       }).catch(error => console.log(error));
 }
 
