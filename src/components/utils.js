@@ -1,5 +1,6 @@
 const page = document.querySelector('.page');
 const content = page.querySelector('.content');
+const galleryCardList = content.querySelector('.gallery__cards');
 
 const configSelectorForm = {
   formSelector: '.form',
@@ -10,6 +11,15 @@ const configSelectorForm = {
   inactiveButtonClass: 'popup__btn_disabled'
 }
 
-const galleryCardList = content.querySelector('.gallery__cards');
+// функция отслеживания состояния загрузки
+function renderLoading(button, isLoading) {
+  if (isLoading) {
+    button.disabled = 'disabled';
+    button.textContent = 'Сохранение...';
+  } else {
+    button.disabled = false;
+    button.textContent = 'Сохранить';
+  }
+}
 
-export {page, content, configSelectorForm, galleryCardList};
+export {page, content, configSelectorForm, galleryCardList, renderLoading};
