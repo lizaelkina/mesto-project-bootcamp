@@ -42,14 +42,14 @@ function createCardElement(cardData) {
             cardData.isLiked = false;
             buttonLikeCard.classList.remove('card__btn-like_active');
             counterLikesCard.textContent = card.likes.length;
-          })
+          }).catch(error => console.log(error));
     } else {
       putLike(cardData._id)
           .then((card) => {
             cardData.isLiked = true;
             buttonLikeCard.classList.add('card__btn-like_active');
             counterLikesCard.textContent = card.likes.length;
-          })
+          }).catch(error => console.log(error));
     }
   }
 
@@ -59,7 +59,7 @@ function createCardElement(cardData) {
     deleteCard(cardData._id)
         .then(() => {
           cardElement.remove();
-        })
+        }).catch(error => console.log(error));
   }
 
   function openConfirmPopup() {

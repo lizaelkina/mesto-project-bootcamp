@@ -10,14 +10,20 @@ export const getUserInfo = () => fetch(`${config.url}/users/me`, {
   method: 'GET',
   headers: config.headers
 }).then(response => {
-  return response.json();
+  if (response.ok) {
+    return response.json();
+  }
+  return Promise.reject(`Ошибка получения данных профиля: ${response.status} ${response.statusText}`);
 });
 
 export const getCards = () => fetch(`${config.url}/cards`, {
   method: 'GET',
   headers: config.headers
 }).then(response => {
-  return response.json();
+  if (response.ok) {
+    return response.json();
+  }
+  return Promise.reject(`Ошибка получения карточек: ${response.status} ${response.statusText}`);
 });
 
 export const updateProfile = (name, description) => fetch(`${config.url}/users/me`, {
@@ -28,7 +34,10 @@ export const updateProfile = (name, description) => fetch(`${config.url}/users/m
     about: description
   })
 }).then(response => {
-  return response.json();
+  if (response.ok) {
+    return response.json();
+  }
+  return Promise.reject(`Ошибка обновления профиля: ${response.status} ${response.statusText}`);
 });
 
 export const updateAvatar = url => fetch(`${config.url}/users/me/avatar`, {
@@ -38,7 +47,10 @@ export const updateAvatar = url => fetch(`${config.url}/users/me/avatar`, {
     avatar: url
   })
 }).then(response => {
-  return response.json();
+  if (response.ok) {
+    return response.json();
+  }
+  return Promise.reject(`Ошибка обновления аватара: ${response.status} ${response.statusText}`);
 });
 
 export const addCard = (name, url) => fetch(`${config.url}/cards`, {
@@ -49,26 +61,38 @@ export const addCard = (name, url) => fetch(`${config.url}/cards`, {
     link: url
   })
 }).then(response => {
-  return response.json();
+  if (response.ok) {
+    return response.json();
+  }
+  return Promise.reject(`Ошибка добавления карточки: ${response.status} ${response.statusText}`);
 });
 
 export const deleteCard = cardId => fetch(`${config.url}/cards/${cardId}`, {
   method: 'DELETE',
   headers: config.headers
 }).then(response => {
-  return response.json();
+  if (response.ok) {
+    return response.json();
+  }
+  return Promise.reject(`Ошибка удаления карточки: ${response.status} ${response.statusText}`);
 });
 
 export const putLike = cardId => fetch(`${config.url}/cards/likes/${cardId}`, {
   method: 'PUT',
   headers: config.headers
 }).then(response => {
-  return response.json();
+  if (response.ok) {
+    return response.json();
+  }
+  return Promise.reject(`Ошибка установки лайка: ${response.status} ${response.statusText}`);
 });
 
 export const deleteLike = cardId => fetch(`${config.url}/cards/likes/${cardId}`, {
   method: 'DELETE',
   headers: config.headers
 }).then(response => {
-  return response.json();
+  if (response.ok) {
+    return response.json();
+  }
+  return Promise.reject(`Ошибка удаления лайка: ${response.status} ${response.statusText}`);
 });

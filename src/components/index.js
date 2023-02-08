@@ -24,7 +24,7 @@ function loadUserProfile() {
                 galleryCardList.append(cardElement);
               })
             })
-      })
+      }).catch(error => console.log(error));
 }
 
 function checkCardIsMy(card) {
@@ -74,7 +74,7 @@ function saveProfile(event) {
         setProfileName(profile.name);
         setProfileDescription(profile.about);
         closePopup(popupProfile);
-      })
+      }).catch(error => console.log(error));
 }
 
 // редактирование аватара профиля
@@ -106,7 +106,7 @@ function saveAvatar(event) {
       .then(avatar => {
         setAvatar(avatar.avatar);
         closePopup(popupAvatar);
-      })
+      }).catch(error => console.log(error));
 }
 
 // добавление изображений
@@ -136,7 +136,7 @@ function addPhotoPopup(event) {
         const cardElement = createCardElement(card);
         galleryCardList.prepend(cardElement);
         closePopup(popupAddPhoto);
-      });
+      }).catch(error => console.log(error));
 }
 
 // вызов функции получения данных пользователя от сервера
