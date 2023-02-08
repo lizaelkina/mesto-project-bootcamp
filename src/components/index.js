@@ -1,14 +1,16 @@
 import '../pages/index.css';
 import {addCard, getCards, getUserInfo, updateAvatar, updateProfile} from './api';
 import {configSelectorForm, content, galleryCardList, page, renderLoading} from './utils';
-import {closePopup, openPopup, } from './modal';
+import {closePopup, openPopup,} from './modal';
 import {createCardElement} from './card';
 import {clearErrorsOfForm, enableValidation, toggleButtonState} from './validate';
 
-// получение данных пользователя от сервера
+let myProfile;
+
 function loadUserProfile() {
   getUserInfo()
       .then(userInfo => {
+        myProfile = userInfo;
         setAvatar(userInfo.avatar);
         setProfileName(userInfo.name);
         setProfileDescription(userInfo.about);
@@ -16,15 +18,23 @@ function loadUserProfile() {
         getCards()
             .then(cards => {
               cards.forEach(card => {
-                card.isMy = card.owner._id === userInfo._id;
-                card.isLiked = card.likes.some((like) => {
-                  return like._id === userInfo._id;
-                })
+                checkCardIsMy(card);
+                checkCardIsLiked(card);
                 const cardElement = createCardElement(card);
                 galleryCardList.append(cardElement);
               })
             })
-      });
+      })
+}
+
+function checkCardIsMy(card) {
+  card.isMy = card.owner._id === myProfile._id;
+}
+
+function checkCardIsLiked(card) {
+  card.isLiked = card.likes.some((like) => {
+    return like._id === myProfile._id;
+  })
 }
 
 // редактирование данных профиля
@@ -121,6 +131,8 @@ function addPhotoPopup(event) {
   renderLoading(buttonSavePhoto, true);
   addCard(photoNameInput.value, photoUrlInput.value)
       .then(card => {
+        checkCardIsMy(card);
+        checkCardIsLiked(card);
         const cardElement = createCardElement(card);
         galleryCardList.prepend(cardElement);
         closePopup(popupAddPhoto);
