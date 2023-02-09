@@ -1,16 +1,10 @@
-import {page} from './utils';
+import {cardTemplate, popupConfirm, popupViewImage, popupViewPhoto, popupViewTitle} from './utils';
 import {openPopup} from './modal';
 import {deleteCard, deleteLike, putLike} from "./api";
 
 // формирование элемента карточки в DOM
 
-const cardTemplate = document.querySelector('#card-item-template').content;
-const popupViewPhoto = page.querySelector('.popup_type_viewer-photo');
-const popupViewImage = popupViewPhoto.querySelector('.viewer__photo');
-const popupViewTitle = popupViewPhoto.querySelector('.viewer__caption');
-const popupConfirm = page.querySelector('.popup_type_confirm');
-
-function createCardElement(cardData) {
+export function createCardElement(cardData) {
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
   const cardImage = cardElement.querySelector('.card__photo');
   const cardTextElement = cardElement.querySelector('.card__text');
@@ -78,5 +72,3 @@ function createCardElement(cardData) {
 
   return cardElement;
 }
-
-export {createCardElement};

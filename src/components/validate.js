@@ -55,4 +55,4 @@ function enableValidation(config) {
   formList.forEach(formItem => setFormEventListeners(formItem, config));
 }
 
-export {enableValidation, toggleButtonState, clearErrorsOfForm};
+export {toggleButtonState, clearErrorsOfForm, enableValidation};
