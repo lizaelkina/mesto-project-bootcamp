@@ -49,12 +49,19 @@ export const configSelectorForm = {
 }
 
 // функция отслеживания состояния загрузки
-export function renderLoading(button, isLoading) {
+export function renderLoading(button, isLoading, text) {
+  button.textContent = text;
   if (isLoading) {
     button.disabled = 'disabled';
-    button.textContent = 'Сохранение...';
   } else {
     button.disabled = false;
-    button.textContent = 'Сохранить';
+  }
+}
+
+export function renderSaveLoading(button, isLoading) {
+  if (isLoading) {
+    renderLoading(button, isLoading, 'Сохранение...');
+  } else {
+    renderLoading(button, isLoading, 'Сохранить');
   }
 }

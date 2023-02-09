@@ -26,7 +26,7 @@ import {
   profileDescriptionInput,
   profileNameElement,
   profileNameInput,
-  renderLoading
+  renderLoading, renderSaveLoading
 } from './utils';
 import {closePopup, openPopup,} from './modal';
 import {createCardElement} from './card';
@@ -51,12 +51,14 @@ function openConfirmPopup(cardData, cardElement) {
 }
 
 function deleteCardElement() {
+  renderLoading(buttonConfirm, true, 'Удаление...');
   deleteCard(cardDataToDelete._id)
       .then(() => {
         cardElementToDelete.remove();
         closePopup(popupConfirm);
       })
-      .catch(error => console.log(error));
+      .catch(error => console.log(error))
+      .finally(() => renderLoading(buttonConfirm, false, 'Да'));
 }
 
 buttonConfirm.addEventListener('click', deleteCardElement);
@@ -101,7 +103,7 @@ function setProfileDescription(description) {
 
 function saveProfile(event) {
   event.preventDefault();
-  renderLoading(buttonSaveProfile, true);
+  renderSaveLoading(buttonSaveProfile, true);
   updateProfile(profileNameInput.value, profileDescriptionInput.value)
       .then(profile => {
         setProfileName(profile.name);
@@ -109,8 +111,7 @@ function saveProfile(event) {
         closePopup(popupProfile);
       })
       .catch(error => console.log(error))
-      .finally(() => renderLoading(buttonSaveProfile, false));
-
+      .finally(() => renderSaveLoading(buttonSaveProfile, false));
 }
 
 // редактирование аватара профиля
@@ -127,14 +128,14 @@ function setAvatar(url) {
 
 function saveAvatar(event) {
   event.preventDefault();
-  renderLoading(buttonSaveAvatar, true);
+  renderSaveLoading(buttonSaveAvatar, true);
   updateAvatar(avatarUrlInput.value)
       .then(avatar => {
         setAvatar(avatar.avatar);
         closePopup(popupAvatar);
       })
       .catch(error => console.log(error))
-      .finally(() => renderLoading(buttonSaveAvatar, false));
+      .finally(() => renderSaveLoading(buttonSaveAvatar, false));
 }
 
 // добавление изображений
@@ -147,7 +148,7 @@ function openAddPhotoPopup() {
 
 function addPhotoPopup(event) {
   event.preventDefault();
-  renderLoading(buttonSavePhoto, true);
+  renderSaveLoading(buttonSavePhoto, true);
   addCard(photoNameInput.value, photoUrlInput.value)
       .then(card => {
         const cardElement = createCardElement(card, userId, openViewPhotoPopup, openConfirmPopup);
@@ -155,7 +156,7 @@ function addPhotoPopup(event) {
         closePopup(popupAddPhoto);
       })
       .catch(error => console.log(error))
-      .finally(() => renderLoading(buttonSavePhoto, false));
+      .finally(() => renderSaveLoading(buttonSavePhoto, false));
 }
 
 // вызов функции получения данных пользователя от сервера
