@@ -32,8 +32,6 @@ import {closePopup, openPopup,} from './modal';
 import {createCardElement} from './card';
 import {clearErrorsOfForm, enableValidation, toggleButtonState} from './validate';
 
-let userId;
-
 // просмотр полного изображения карточки
 function openViewPhotoPopup(cardData) {
   popupViewImage.src = cardData.link;
@@ -63,6 +61,9 @@ function deleteCardElement() {
 
 buttonConfirm.addEventListener('click', deleteCardElement);
 
+// загрузка данных полбзователя
+let userId;
+
 function loadUserProfile() {
   getUserInfo()
       .then(userInfo => {
@@ -74,27 +75,14 @@ function loadUserProfile() {
         getCards()
             .then(cards => {
               cards.forEach(card => {
-                checkCardIsMy(card);
-                checkCardIsLiked(card);
-                const cardElement = createCardElement(card, openViewPhotoPopup, openConfirmPopup);
+                const cardElement = createCardElement(card, userId, openViewPhotoPopup, openConfirmPopup);
                 galleryCardList.append(cardElement);
               })
             }).catch(error => console.log(error));
       }).catch(error => console.log(error));
 }
 
-function checkCardIsMy(card) {
-  card.isMy = card.owner._id === userId;
-}
-
-function checkCardIsLiked(card) {
-  card.isLiked = card.likes.some((like) => {
-    return like._id === userId;
-  })
-}
-
 // редактирование данных профиля
-
 function openProfilePopup() {
   profileNameInput.value = profileNameElement.textContent;
   profileDescriptionInput.value = profileDescriptionElement.textContent;
@@ -126,7 +114,6 @@ function saveProfile(event) {
 }
 
 // редактирование аватара профиля
-
 function openEditAvatarPopup() {
   formUpdateAvatar.reset();
   clearErrorsOfForm(formUpdateAvatar, configSelectorForm);
@@ -151,7 +138,6 @@ function saveAvatar(event) {
 }
 
 // добавление изображений
-
 function openAddPhotoPopup() {
   formAddPhoto.reset();
   clearErrorsOfForm(formAddPhoto, configSelectorForm);
@@ -164,9 +150,7 @@ function addPhotoPopup(event) {
   renderLoading(buttonSavePhoto, true);
   addCard(photoNameInput.value, photoUrlInput.value)
       .then(card => {
-        checkCardIsMy(card);
-        checkCardIsLiked(card);
-        const cardElement = createCardElement(card, openViewPhotoPopup, openConfirmPopup);
+        const cardElement = createCardElement(card, userId, openViewPhotoPopup, openConfirmPopup);
         galleryCardList.prepend(cardElement);
         closePopup(popupAddPhoto);
       })

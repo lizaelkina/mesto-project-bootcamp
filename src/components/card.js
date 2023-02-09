@@ -1,9 +1,19 @@
 import {cardTemplate} from './utils';
 import {deleteLike, putLike} from "./api";
 
-// формирование элемента карточки в DOM
+// проверки на владельца и на лайки
+function checkCardIsMy(card, userId) {
+  return card.owner._id === userId;
+}
 
-export function createCardElement(cardData, callbackOpenViewer, callbackOpenConfirm) {
+function checkCardIsLiked(card, userId) {
+  return card.likes.some((like) => {
+    return like._id === userId;
+  })
+}
+
+// формирование элемента карточки в DOM
+export function createCardElement(cardData, userId, callbackOpenViewer, callbackOpenConfirm) {
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
   cardData.element = cardElement;
   const cardImage = cardElement.querySelector('.card__photo');
@@ -20,22 +30,20 @@ export function createCardElement(cardData, callbackOpenViewer, callbackOpenConf
     callbackOpenViewer(cardData);
   });
 
-  if (cardData.isLiked) {
+  if (checkCardIsLiked(cardData, userId)) {
     buttonLikeCard.classList.add('card__btn-like_active');
   }
 
   function toggleLikeElement() {
-    if (cardData.isLiked) {
+    if (buttonLikeCard.classList.contains('card__btn-like_active')) {
       deleteLike(cardData._id)
           .then((card) => {
-            cardData.isLiked = false;
             buttonLikeCard.classList.remove('card__btn-like_active');
             counterLikesCard.textContent = card.likes.length;
           }).catch(error => console.log(error));
     } else {
       putLike(cardData._id)
           .then((card) => {
-            cardData.isLiked = true;
             buttonLikeCard.classList.add('card__btn-like_active');
             counterLikesCard.textContent = card.likes.length;
           }).catch(error => console.log(error));
@@ -44,7 +52,7 @@ export function createCardElement(cardData, callbackOpenViewer, callbackOpenConf
 
   buttonLikeCard.addEventListener('click', toggleLikeElement);
 
-  if (cardData.isMy) {
+  if (checkCardIsMy(cardData, userId)) {
     buttonDeleteCard.addEventListener('click', () => {
       callbackOpenConfirm(cardData, cardElement);
     });
