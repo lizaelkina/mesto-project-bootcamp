@@ -19,6 +19,9 @@ import {
   popupAddPhoto,
   popupAvatar,
   popupProfile,
+  popupViewImage,
+  popupViewPhoto,
+  popupViewTitle,
   profileDescriptionElement,
   profileDescriptionInput,
   profileNameElement,
@@ -30,6 +33,15 @@ import {createCardElement} from './card';
 import {clearErrorsOfForm, enableValidation, toggleButtonState} from './validate';
 
 let userId;
+
+// просмотр полного изображения карточки
+function openViewPhotoPopup(cardData) {
+  popupViewImage.src = cardData.link;
+  popupViewImage.setAttribute('alt', cardData.name);
+  popupViewTitle.textContent = cardData.name;
+  openPopup(popupViewPhoto);
+}
+
 
 function loadUserProfile() {
   getUserInfo()
@@ -44,7 +56,7 @@ function loadUserProfile() {
               cards.forEach(card => {
                 checkCardIsMy(card);
                 checkCardIsLiked(card);
-                const cardElement = createCardElement(card);
+                const cardElement = createCardElement(card, openViewPhotoPopup);
                 galleryCardList.append(cardElement);
               })
             }).catch(error => console.log(error));
@@ -134,7 +146,7 @@ function addPhotoPopup(event) {
       .then(card => {
         checkCardIsMy(card);
         checkCardIsLiked(card);
-        const cardElement = createCardElement(card);
+        const cardElement = createCardElement(card, openViewPhotoPopup);
         galleryCardList.prepend(cardElement);
         closePopup(popupAddPhoto);
       })

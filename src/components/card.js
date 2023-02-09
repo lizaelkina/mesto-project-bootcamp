@@ -1,4 +1,4 @@
-import {buttonConfirm, cardTemplate, popupConfirm, popupViewImage, popupViewPhoto, popupViewTitle} from './utils';
+import {buttonConfirm, cardTemplate, popupConfirm} from './utils';
 import {closePopup, openPopup} from './modal';
 import {deleteCard, deleteLike, putLike} from "./api";
 
@@ -18,7 +18,7 @@ function deleteCardElement() {
 
 buttonConfirm.addEventListener('click', deleteCardElement);
 
-export function createCardElement(cardData) {
+export function createCardElement(cardData, callbackOpenViewer) {
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
   cardData.element = cardElement;
   const cardImage = cardElement.querySelector('.card__photo');
@@ -31,14 +31,9 @@ export function createCardElement(cardData) {
   cardTextElement.textContent = cardData.name;
   counterLikesCard.textContent = cardData.likes.length;
 
-  function openViewPhotoPopup() {
-    popupViewImage.src = cardData.link;
-    popupViewImage.setAttribute('alt', cardData.name);
-    popupViewTitle.textContent = cardData.name;
-    openPopup(popupViewPhoto);
-  }
-
-  cardImage.addEventListener('click', openViewPhotoPopup);
+  cardImage.addEventListener('click', () => {
+    callbackOpenViewer(cardData);
+  });
 
   if (cardData.isLiked) {
     buttonLikeCard.classList.add('card__btn-like_active');
