@@ -67,7 +67,6 @@ function openProfilePopup() {
   profileNameInput.value = profileNameElement.textContent;
   profileDescriptionInput.value = profileDescriptionElement.textContent;
   clearErrorsOfForm(formSaveProfile, configSelectorForm);
-  renderLoading(buttonSaveProfile, false);
   toggleButtonState(buttonSaveProfile, false, configSelectorForm);
   openPopup(popupProfile);
 }
@@ -88,7 +87,10 @@ function saveProfile(event) {
         setProfileName(profile.name);
         setProfileDescription(profile.about);
         closePopup(popupProfile);
-      }).catch(error => console.log(error));
+      })
+      .catch(error => console.log(error))
+      .finally(() => renderLoading(buttonSaveProfile, false));
+
 }
 
 // редактирование аватара профиля
@@ -96,7 +98,6 @@ function saveProfile(event) {
 function openEditAvatarPopup() {
   formUpdateAvatar.reset();
   clearErrorsOfForm(formUpdateAvatar, configSelectorForm);
-  renderLoading(buttonSaveAvatar, false);
   toggleButtonState(buttonSaveAvatar, false, configSelectorForm);
   openPopup(popupAvatar);
 }
@@ -112,7 +113,9 @@ function saveAvatar(event) {
       .then(avatar => {
         setAvatar(avatar.avatar);
         closePopup(popupAvatar);
-      }).catch(error => console.log(error));
+      })
+      .catch(error => console.log(error))
+      .finally(() => renderLoading(buttonSaveAvatar, false));
 }
 
 // добавление изображений
@@ -120,7 +123,6 @@ function saveAvatar(event) {
 function openAddPhotoPopup() {
   formAddPhoto.reset();
   clearErrorsOfForm(formAddPhoto, configSelectorForm);
-  renderLoading(buttonSavePhoto, false);
   toggleButtonState(buttonSavePhoto, false, configSelectorForm);
   openPopup(popupAddPhoto);
 }
@@ -135,7 +137,9 @@ function addPhotoPopup(event) {
         const cardElement = createCardElement(card);
         galleryCardList.prepend(cardElement);
         closePopup(popupAddPhoto);
-      }).catch(error => console.log(error));
+      })
+      .catch(error => console.log(error))
+      .finally(() => renderLoading(buttonSavePhoto, false));
 }
 
 // вызов функции получения данных пользователя от сервера
