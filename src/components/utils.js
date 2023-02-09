@@ -36,6 +36,7 @@ export const popupViewTitle = popupViewPhoto.querySelector('.viewer__caption');
 
 // открытие попапа подтверждения
 export const popupConfirm = page.querySelector('.popup_type_confirm');
+export const buttonConfirm = popupConfirm.querySelector('.popup__btn_type_confirm');
 
 // форма
 export const configSelectorForm = {

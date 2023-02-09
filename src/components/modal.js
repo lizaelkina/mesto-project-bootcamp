@@ -7,35 +7,18 @@ function closePopupByEsc(event) {
   }
 }
 
-function confirmPopup() {
-  const popup = page.querySelector('.popup_opened');
-  closePopup(popup, true);
-}
-
 // открытие попапов
 
-function openPopup(popup, callback) {
+function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupByEsc);
-  popup.callback = callback;
-  const buttonConfirm = popup.querySelector('.popup__btn_type_confirm');
-  if (buttonConfirm !== null) {
-    buttonConfirm.addEventListener('click', confirmPopup);
-  }
 }
 
 // закрытие попапов
 
-function closePopup(popup, confirmed = false) {
+function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopupByEsc);
-  const buttonConfirm = popup.querySelector('.popup__btn_type_confirm');
-  if (buttonConfirm !== null) {
-    buttonConfirm.removeEventListener('click', confirmPopup);
-  }
-  if (popup.callback !== undefined) {
-    popup.callback(confirmed);
-  }
 }
 
 const popupList = page.querySelectorAll('.popup');
