@@ -3,7 +3,8 @@ import {addCard, deleteCard, getCards, getUserInfo, updateAvatar, updateProfile}
 import {
   avatarImage,
   avatarUrlInput,
-  buttonAddPhoto, buttonConfirm,
+  buttonAddPhoto,
+  buttonConfirm,
   buttonEditAvatar,
   buttonEditProfile,
   buttonSaveAvatar,
@@ -17,7 +18,8 @@ import {
   photoNameInput,
   photoUrlInput,
   popupAddPhoto,
-  popupAvatar, popupConfirm,
+  popupAvatar,
+  popupConfirm,
   popupProfile,
   popupViewImage,
   popupViewPhoto,
@@ -26,7 +28,8 @@ import {
   profileDescriptionInput,
   profileNameElement,
   profileNameInput,
-  renderLoading, renderSaveLoading
+  renderLoading,
+  renderSaveLoading
 } from './utils';
 import {closePopup, openPopup,} from './modal';
 import {createCardElement} from './card';
@@ -63,25 +66,25 @@ function deleteCardElement() {
 
 buttonConfirm.addEventListener('click', deleteCardElement);
 
-// загрузка данных полбзователя
+// загрузка данных пользователя
 let userId;
 
 function loadUserProfile() {
-  getUserInfo()
-      .then(userInfo => {
+  Promise.all([getUserInfo(), getCards()])
+      .then(results => {
+        const userInfo = results[0];
         userId = userInfo._id;
         setAvatar(userInfo.avatar);
         setProfileName(userInfo.name);
         setProfileDescription(userInfo.about);
 
-        getCards()
-            .then(cards => {
-              cards.forEach(card => {
-                const cardElement = createCardElement(card, userId, openViewPhotoPopup, openConfirmPopup);
-                galleryCardList.append(cardElement);
-              })
-            }).catch(error => console.log(error));
-      }).catch(error => console.log(error));
+        const cards = results[1];
+        cards.forEach(card => {
+          const cardElement = createCardElement(card, userId, openViewPhotoPopup, openConfirmPopup);
+          galleryCardList.append(cardElement);
+        })
+      })
+      .catch(errors => console.log(errors));
 }
 
 // редактирование данных профиля
