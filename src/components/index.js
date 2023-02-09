@@ -29,12 +29,12 @@ import {closePopup, openPopup,} from './modal';
 import {createCardElement} from './card';
 import {clearErrorsOfForm, enableValidation, toggleButtonState} from './validate';
 
-let myProfile;
+let userId;
 
 function loadUserProfile() {
   getUserInfo()
       .then(userInfo => {
-        myProfile = userInfo;
+        userId = userInfo._id;
         setAvatar(userInfo.avatar);
         setProfileName(userInfo.name);
         setProfileDescription(userInfo.about);
@@ -52,12 +52,12 @@ function loadUserProfile() {
 }
 
 function checkCardIsMy(card) {
-  card.isMy = card.owner._id === myProfile._id;
+  card.isMy = card.owner._id === userId;
 }
 
 function checkCardIsLiked(card) {
   card.isLiked = card.likes.some((like) => {
-    return like._id === myProfile._id;
+    return like._id === userId;
   })
 }
 

@@ -27,12 +27,14 @@ export const photoNameInput = popupAddPhoto.querySelector('.form__input_type_pho
 export const photoUrlInput = popupAddPhoto.querySelector('.form__input_type_photo-url');
 export const buttonSavePhoto = popupAddPhoto.querySelector('.popup__btn_type_form');
 export const galleryCardList = content.querySelector('.gallery__cards');
-
-// формирование элемента карточки
 export const cardTemplate = document.querySelector('#card-item-template').content;
+
+// просмотр полного изображения карточки
 export const popupViewPhoto = page.querySelector('.popup_type_viewer-photo');
 export const popupViewImage = popupViewPhoto.querySelector('.viewer__photo');
 export const popupViewTitle = popupViewPhoto.querySelector('.viewer__caption');
+
+// открытие попапа подтверждения
 export const popupConfirm = page.querySelector('.popup_type_confirm');
 
 // форма
