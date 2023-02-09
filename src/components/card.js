@@ -1,24 +1,9 @@
-import {buttonConfirm, cardTemplate, popupConfirm} from './utils';
-import {closePopup, openPopup} from './modal';
-import {deleteCard, deleteLike, putLike} from "./api";
+import {cardTemplate} from './utils';
+import {deleteLike, putLike} from "./api";
 
 // формирование элемента карточки в DOM
 
-let cardDataToDelete;
-let cardElementToDelete;
-
-function deleteCardElement() {
-  deleteCard(cardDataToDelete._id)
-      .then(() => {
-        cardElementToDelete.remove();
-        closePopup(popupConfirm);
-      })
-      .catch(error => console.log(error));
-}
-
-buttonConfirm.addEventListener('click', deleteCardElement);
-
-export function createCardElement(cardData, callbackOpenViewer) {
+export function createCardElement(cardData, callbackOpenViewer, callbackOpenConfirm) {
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
   cardData.element = cardElement;
   const cardImage = cardElement.querySelector('.card__photo');
@@ -59,14 +44,10 @@ export function createCardElement(cardData, callbackOpenViewer) {
 
   buttonLikeCard.addEventListener('click', toggleLikeElement);
 
-  function openConfirmPopup() {
-    cardDataToDelete = cardData;
-    cardElementToDelete = cardElement;
-    openPopup(popupConfirm);
-  }
-
   if (cardData.isMy) {
-    buttonDeleteCard.addEventListener('click', openConfirmPopup);
+    buttonDeleteCard.addEventListener('click', () => {
+      callbackOpenConfirm(cardData, cardElement);
+    });
   } else {
     buttonDeleteCard.remove();
   }

@@ -1,9 +1,9 @@
 import '../pages/index.css';
-import {addCard, getCards, getUserInfo, updateAvatar, updateProfile} from './api';
+import {addCard, deleteCard, getCards, getUserInfo, updateAvatar, updateProfile} from './api';
 import {
   avatarImage,
   avatarUrlInput,
-  buttonAddPhoto,
+  buttonAddPhoto, buttonConfirm,
   buttonEditAvatar,
   buttonEditProfile,
   buttonSaveAvatar,
@@ -17,7 +17,7 @@ import {
   photoNameInput,
   photoUrlInput,
   popupAddPhoto,
-  popupAvatar,
+  popupAvatar, popupConfirm,
   popupProfile,
   popupViewImage,
   popupViewPhoto,
@@ -42,6 +42,26 @@ function openViewPhotoPopup(cardData) {
   openPopup(popupViewPhoto);
 }
 
+// удаление карточки
+let cardDataToDelete;
+let cardElementToDelete;
+
+function openConfirmPopup(cardData, cardElement) {
+  cardDataToDelete = cardData;
+  cardElementToDelete = cardElement;
+  openPopup(popupConfirm);
+}
+
+function deleteCardElement() {
+  deleteCard(cardDataToDelete._id)
+      .then(() => {
+        cardElementToDelete.remove();
+        closePopup(popupConfirm);
+      })
+      .catch(error => console.log(error));
+}
+
+buttonConfirm.addEventListener('click', deleteCardElement);
 
 function loadUserProfile() {
   getUserInfo()
@@ -56,7 +76,7 @@ function loadUserProfile() {
               cards.forEach(card => {
                 checkCardIsMy(card);
                 checkCardIsLiked(card);
-                const cardElement = createCardElement(card, openViewPhotoPopup);
+                const cardElement = createCardElement(card, openViewPhotoPopup, openConfirmPopup);
                 galleryCardList.append(cardElement);
               })
             }).catch(error => console.log(error));
@@ -146,7 +166,7 @@ function addPhotoPopup(event) {
       .then(card => {
         checkCardIsMy(card);
         checkCardIsLiked(card);
-        const cardElement = createCardElement(card, openViewPhotoPopup);
+        const cardElement = createCardElement(card, openViewPhotoPopup, openConfirmPopup);
         galleryCardList.prepend(cardElement);
         closePopup(popupAddPhoto);
       })
