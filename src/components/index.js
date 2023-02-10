@@ -15,6 +15,10 @@ import {
   formSaveProfile,
   formUpdateAvatar,
   galleryCardList,
+  hideServerError,
+  messageErrorAvatar,
+  messageErrorPhoto,
+  messageErrorProfile,
   photoNameInput,
   photoUrlInput,
   popupAddPhoto,
@@ -29,7 +33,8 @@ import {
   profileNameElement,
   profileNameInput,
   renderLoading,
-  renderSaveLoading
+  renderSaveLoading,
+  showServerError
 } from './utils';
 import {closePopup, openPopup,} from './modal';
 import {createCardElement} from './card';
@@ -92,6 +97,7 @@ function openProfilePopup() {
   profileNameInput.value = profileNameElement.textContent;
   profileDescriptionInput.value = profileDescriptionElement.textContent;
   clearErrorsOfForm(formSaveProfile, configSelectorForm);
+  hideServerError(messageErrorProfile);
   toggleButtonState(buttonSaveProfile, false, configSelectorForm);
   openPopup(popupProfile);
 }
@@ -107,20 +113,27 @@ function setProfileDescription(description) {
 function saveProfile(event) {
   event.preventDefault();
   renderSaveLoading(buttonSaveProfile, true);
+  hideServerError(messageErrorProfile);
   updateProfile(profileNameInput.value, profileDescriptionInput.value)
       .then(profile => {
         setProfileName(profile.name);
         setProfileDescription(profile.about);
         closePopup(popupProfile);
       })
-      .catch(error => console.log(error))
-      .finally(() => renderSaveLoading(buttonSaveProfile, false));
+      .catch(error => {
+        console.log(error);
+        showServerError(messageErrorProfile, error);
+      })
+      .finally(() => {
+        renderSaveLoading(buttonSaveProfile, false);
+      });
 }
 
 // редактирование аватара профиля
 function openEditAvatarPopup() {
   formUpdateAvatar.reset();
   clearErrorsOfForm(formUpdateAvatar, configSelectorForm);
+  hideServerError(messageErrorAvatar);
   toggleButtonState(buttonSaveAvatar, false, configSelectorForm);
   openPopup(popupAvatar);
 }
@@ -132,19 +145,26 @@ function setAvatar(url) {
 function saveAvatar(event) {
   event.preventDefault();
   renderSaveLoading(buttonSaveAvatar, true);
+  hideServerError(messageErrorAvatar);
   updateAvatar(avatarUrlInput.value)
       .then(avatar => {
         setAvatar(avatar.avatar);
         closePopup(popupAvatar);
       })
-      .catch(error => console.log(error))
-      .finally(() => renderSaveLoading(buttonSaveAvatar, false));
+      .catch(error => {
+        console.log(error);
+        showServerError(messageErrorAvatar, error);
+      })
+      .finally(() => {
+        renderSaveLoading(buttonSaveAvatar, false);
+      });
 }
 
 // добавление изображений
 function openAddPhotoPopup() {
   formAddPhoto.reset();
   clearErrorsOfForm(formAddPhoto, configSelectorForm);
+  hideServerError(messageErrorPhoto);
   toggleButtonState(buttonSavePhoto, false, configSelectorForm);
   openPopup(popupAddPhoto);
 }
@@ -152,14 +172,20 @@ function openAddPhotoPopup() {
 function addPhotoPopup(event) {
   event.preventDefault();
   renderSaveLoading(buttonSavePhoto, true);
+  hideServerError(messageErrorPhoto);
   addCard(photoNameInput.value, photoUrlInput.value)
       .then(card => {
         const cardElement = createCardElement(card, userId, openViewPhotoPopup, openConfirmPopup);
         galleryCardList.prepend(cardElement);
         closePopup(popupAddPhoto);
       })
-      .catch(error => console.log(error))
-      .finally(() => renderSaveLoading(buttonSavePhoto, false));
+      .catch(error => {
+        console.log(error);
+        showServerError(messageErrorPhoto, error);
+      })
+      .finally(() => {
+        renderSaveLoading(buttonSavePhoto, false);
+      });
 }
 
 // вызов функции получения данных пользователя от сервера
