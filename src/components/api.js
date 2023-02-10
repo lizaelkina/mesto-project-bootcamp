@@ -37,7 +37,7 @@ export const updateProfile = (name, description) => fetch(`${config.url}/users/m
   if (response.ok) {
     return response.json();
   }
-  return Promise.reject(`Ошибка обновления профиля: ${response.status} ${response.statusText}`);
+  return Promise.reject(`Ошибка обновления профиля: ${response.status}. Попробуйте ещё раз.`);
 });
 
 export const updateAvatar = url => fetch(`${config.url}/users/me/avatar`, {
@@ -50,7 +50,7 @@ export const updateAvatar = url => fetch(`${config.url}/users/me/avatar`, {
   if (response.ok) {
     return response.json();
   }
-  return Promise.reject(`Ошибка обновления аватара: ${response.status} ${response.statusText}`);
+  return Promise.reject(`Ошибка обновления аватара: ${response.status}. Попробуйте ещё раз.`);
 });
 
 export const addCard = (name, url) => fetch(`${config.url}/cards`, {
@@ -64,7 +64,7 @@ export const addCard = (name, url) => fetch(`${config.url}/cards`, {
   if (response.ok) {
     return response.json();
   }
-  return Promise.reject(`Ошибка добавления карточки: ${response.status} ${response.statusText}`);
+  return Promise.reject(`Ошибка добавления карточки: ${response.status}. Попробуйте ещё раз.`);
 });
 
 export const deleteCard = cardId => fetch(`${config.url}/cards/${cardId}`, {
@@ -74,7 +74,7 @@ export const deleteCard = cardId => fetch(`${config.url}/cards/${cardId}`, {
   if (response.ok) {
     return response.json();
   }
-  return Promise.reject(`Ошибка удаления карточки: ${response.status} ${response.statusText}`);
+  return Promise.reject(`Ошибка удаления карточки: ${response.status}. Попробуйте ещё раз.`);
 });
 
 export const putLike = cardId => fetch(`${config.url}/cards/likes/${cardId}`, {
