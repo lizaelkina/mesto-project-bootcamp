@@ -6,7 +6,7 @@
     "profile__title profile__btn-edit"
     "profile__subtitle profile__subtitle";
   column-gap: 18px;
-  row-gap: 7px; /* 16px в дизайне указывается без учета нижних выносных букв */
+  row-gap: 7px;
 }
 
 @media (max-width: 720px) {
