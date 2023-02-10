@@ -1,14 +1,23 @@
 .popup__error {
+  position: absolute;
+  top: 70px;
+  left: 35px;
   visibility: hidden;
-  margin: 10px 0 0;
-  padding: 0;
-  min-height: 28px;
+  max-width: 258px;
   font-family: var(--font-family);
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  line-height: 12px;
+  line-height: 14px;
   color: var(--text-error);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@media (max-width: 540px) {
+  .popup__error {
+    top: 56px;
+    left: 22px;
+    max-width: 238px;
+  }
 }

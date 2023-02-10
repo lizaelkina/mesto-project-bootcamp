@@ -46,6 +46,7 @@
     <div class="popup__container popup__container_dialog">
       <button class="popup__btn-close" aria-label="Закрыть окно"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
+      <span class="popup__error"></span>
       <form class="form" name="edit-profile" novalidate>
         <input class="form__input form__input_type_profile-name" id="profile-name" type="text"
                placeholder="Введите имя профиля" minlength="2" maxlength="40" autocomplete="off" required>
@@ -62,6 +63,7 @@
     <div class="popup__container popup__container_dialog">
       <button class="popup__btn-close" aria-label="Закрыть окно"></button>
       <h3 class="popup__title">Новое место</h3>
+      <span class="popup__error"></span>
       <form class="form" name="add-photo" novalidate>
         <input class="form__input form__input_type_photo-name" type="text" id="photo-name"
                placeholder="Название" minlength="2" maxlength="30" autocomplete="off" required>
@@ -86,6 +88,7 @@
     <div class="popup__container popup__container_dialog">
       <button class="popup__btn-close" aria-label="Закрыть окно"></button>
       <h3 class="popup__title">Обновить аватар</h3>
+      <span class="popup__error"></span>
       <form class="form" name="update-avatar" novalidate>
         <input class="form__input form__input_type_avatar-url" type="url" id="avatar-url"
                placeholder="Ссылка на картинку" autocomplete="off" required>
@@ -98,6 +101,7 @@
     <div class="popup__container popup__container_dialog">
       <button class="popup__btn-close" aria-label="Закрыть окно"></button>
       <h3 class="popup__title">Вы уверены?</h3>
+      <span class="popup__error"></span>
       <button class="popup__btn popup__btn_type_confirm" type="button">Да</button>
     </div>
   </div>
