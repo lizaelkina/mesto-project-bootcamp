@@ -67,7 +67,7 @@ export const addCard = (name, url) => fetch(`${config.url}/cards`, {
   return Promise.reject(`Ошибка добавления карточки: ${response.status}. Попробуйте ещё раз.`);
 });
 
-export const deleteCard = cardId => fetch(`${config.url}/cards1/${cardId}`, {
+export const deleteCard = cardId => fetch(`${config.url}/cards/${cardId}`, {
   method: 'DELETE',
   headers: config.headers
 }).then(response => {

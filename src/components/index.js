@@ -17,6 +17,7 @@ import {
   galleryCardList,
   hideServerError,
   messageErrorAvatar,
+  messageErrorConfirm,
   messageErrorPhoto,
   messageErrorProfile,
   photoNameInput,
@@ -55,17 +56,22 @@ let cardElementToDelete;
 function openConfirmPopup(cardData, cardElement) {
   cardDataToDelete = cardData;
   cardElementToDelete = cardElement;
+  hideServerError(messageErrorConfirm);
   openPopup(popupConfirm);
 }
 
 function deleteCardElement() {
   renderLoading(buttonConfirm, true, 'Удаление...');
+  hideServerError(messageErrorConfirm);
   deleteCard(cardDataToDelete._id)
       .then(() => {
         cardElementToDelete.remove();
         closePopup(popupConfirm);
       })
-      .catch(error => console.log(error))
+      .catch(error => {
+        console.log(error);
+        showServerError(messageErrorConfirm, error);
+      })
       .finally(() => renderLoading(buttonConfirm, false, 'Да'));
 }
 
