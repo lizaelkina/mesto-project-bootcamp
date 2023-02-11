@@ -1,4 +1,4 @@
-import {page, runScrollBody, stopScrollBody} from './utils';
+import {body, page} from './utils';
 
 function closePopupByEsc(event) {
   if (event.key === 'Escape') {
@@ -11,7 +11,7 @@ function closePopupByEsc(event) {
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  stopScrollBody();
+  body.classList.add('root_popup-open');
   document.addEventListener('keydown', closePopupByEsc);
 }
 
@@ -19,7 +19,7 @@ function openPopup(popup) {
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  runScrollBody();
+  body.classList.remove('root_popup-open');
   document.removeEventListener('keydown', closePopupByEsc);
 }
 
