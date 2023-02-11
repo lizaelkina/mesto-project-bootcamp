@@ -1,5 +1,6 @@
 export const page = document.querySelector('.page');
 export const content = page.querySelector('.content');
+export const body = page.querySelector('.root');
 
 // профиль пользователя
 export const popupProfile = page.querySelector('.popup_type_edit-profile');
@@ -79,4 +80,13 @@ export function showServerError(message, error) {
 export function hideServerError(message) {
   message.classList.remove('popup__error_active');
   message.textContent = '';
+}
+
+// блокировка прокрутки страницы при открытом попапе
+export function stopScrollBody() {
+  document.body.classList.add('root_popup-open');
+}
+
+export function runScrollBody() {
+  document.body.classList.remove('root_popup-open');
 }
