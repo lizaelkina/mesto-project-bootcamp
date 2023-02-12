@@ -7,6 +7,8 @@
 .page__header{margin:45px 0 40px}@media (max-width:540px){.page__header{margin:28px 0 42px}}
 .page__footer{margin-bottom:60px}@media (max-width:960px){.page__footer{margin-left:19px;margin-right:19px}}@media (max-width:540px){.page__footer{margin-bottom:36px}}
 .content{flex-grow:1}@media (max-width:960px){.content{margin-left:19px;margin-right:19px}}
+.content__error{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:var(--text-error);font-family:var(--font-family);font-size:32px;font-style:normal;font-weight:500;line-height:38px;text-align:center;visibility:visible}@media (max-width:720px){.content__error{font-size:clamp(17px,8vw,32px);line-height:clamp(23px,8.5vw,38px)}}@media (max-width:540px){.content__error{font-size:17px;line-height:23px}}
+.content_inactive{visibility:hidden}
 .content__profile{margin-bottom:50px}@media (max-width:720px){.content__profile{margin-bottom:36px}}
 .content__gallery{margin-bottom:66px}@media (max-width:540px){.content__gallery{margin-bottom:48px}}
 .header{border-bottom:1px solid rgba(84,84,84,.7);box-sizing:border-box;padding-bottom:41px}@media (max-width:960px){.header{padding-bottom:31.6px;padding-left:27px}}
