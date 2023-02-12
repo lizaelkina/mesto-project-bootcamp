@@ -6,7 +6,7 @@ const config = {
   }
 }
 
-export const getUserInfo = () => fetch(`${config.url}/users/me1`, {
+export const getUserInfo = () => fetch(`${config.url}/users/me`, {
   method: 'GET',
   headers: config.headers
 }).then(response => {
