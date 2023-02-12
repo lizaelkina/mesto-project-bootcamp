@@ -6,14 +6,14 @@ const config = {
   }
 }
 
-export const getUserInfo = () => fetch(`${config.url}/users/me`, {
+export const getUserInfo = () => fetch(`${config.url}/users/me1`, {
   method: 'GET',
   headers: config.headers
 }).then(response => {
   if (response.ok) {
     return response.json();
   }
-  return Promise.reject(`Ошибка получения данных профиля: ${response.status} ${response.statusText}`);
+  return Promise.reject(`Ошибка отображения данных: ${response.status}. Попробуйте перезагрузить страницу.`);
 });
 
 export const getCards = () => fetch(`${config.url}/cards`, {
@@ -23,7 +23,7 @@ export const getCards = () => fetch(`${config.url}/cards`, {
   if (response.ok) {
     return response.json();
   }
-  return Promise.reject(`Ошибка получения карточек: ${response.status} ${response.statusText}`);
+  return Promise.reject(`Ошибка отображения данных: ${response.status}. Попробуйте перезагрузить страницу.`);
 });
 
 export const updateProfile = (name, description) => fetch(`${config.url}/users/me`, {

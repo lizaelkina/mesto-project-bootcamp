@@ -35,6 +35,7 @@ import {
   profileNameInput,
   renderLoading,
   renderSaveLoading,
+  showDataLoadingError,
   showServerError
 } from './utils';
 import {closePopup, openPopup,} from './modal';
@@ -95,7 +96,10 @@ function loadUserProfile() {
           galleryCardList.append(cardElement);
         })
       })
-      .catch(errors => console.log(errors));
+      .catch(errors => {
+        console.log(errors);
+        showDataLoadingError(errors);
+      });
 }
 
 // редактирование данных профиля

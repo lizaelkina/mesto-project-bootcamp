@@ -1,6 +1,6 @@
-export const page = document.querySelector('.page');
 export const body = document.querySelector('.root');
-export const content = page.querySelector('.content');
+export const page = document.querySelector('.page');
+export const content = document.querySelector('.content');
 
 // профиль пользователя
 export const popupProfile = page.querySelector('.popup_type_edit-profile');
@@ -80,4 +80,12 @@ export function showServerError(message, error) {
 export function hideServerError(message) {
   message.classList.remove('popup__error_active');
   message.textContent = '';
+}
+
+export function showDataLoadingError (error) {
+  content.classList.add('content_inactive');
+  const contentLoadingError= document.createElement('section');
+  contentLoadingError.classList.add('content__error');
+  contentLoadingError.textContent = error;
+  content.prepend(contentLoadingError);
 }
