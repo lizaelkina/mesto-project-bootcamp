@@ -1,0 +1,15 @@
+.card__error-like {
+  position: absolute;
+  left: 20px;
+  bottom: 10px;
+  visibility: hidden;
+  max-width: 282px;
+  font-family: var(--font-family);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 10px;
+  color: var(--text-error);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
