@@ -1,5 +1,5 @@
 import '../pages/index.css';
-import {addCard, deleteCard, getCards, getUserInfo, updateAvatar, updateProfile} from './api';
+import {addCard, deleteCard, deleteLike, getCards, getUserInfo, putLike, updateAvatar, updateProfile} from './api';
 import {
   avatarImage,
   avatarUrlInput,
@@ -39,7 +39,7 @@ import {
   showServerError
 } from './utils';
 import {closePopup, openPopup,} from './modal';
-import {createCardElement} from './card';
+import {createCardElement, toggleLike} from './card';
 import {clearErrorsOfForm, enableValidation, toggleButtonState} from './validate';
 
 // просмотр полного изображения карточки
@@ -78,6 +78,22 @@ function deleteCardElement() {
 
 buttonConfirm.addEventListener('click', deleteCardElement);
 
+// установка лайков в карточке
+function setLikeCard(cardData, cardElement, status) {
+  status ?
+      deleteLike(cardData._id)
+          .then((card) => {
+            toggleLike(cardElement, card.likes);
+          })
+          .catch(error => console.log(error))
+      :
+      putLike(cardData._id)
+          .then((card) => {
+            toggleLike(cardElement, card.likes);
+          })
+          .catch(error => console.log(error));
+}
+
 // загрузка данных пользователя
 let userId;
 
@@ -92,7 +108,7 @@ function loadUserProfile() {
 
         const cards = results[1];
         cards.forEach(card => {
-          const cardElement = createCardElement(card, userId, openViewPhotoPopup, openConfirmPopup);
+          const cardElement = createCardElement(card, userId, openViewPhotoPopup, openConfirmPopup, setLikeCard);
           galleryCardList.append(cardElement);
         })
       })
@@ -185,7 +201,7 @@ function addPhotoPopup(event) {
   hideServerError(messageErrorPhoto);
   addCard(photoNameInput.value, photoUrlInput.value)
       .then(card => {
-        const cardElement = createCardElement(card, userId, openViewPhotoPopup, openConfirmPopup);
+        const cardElement = createCardElement(card, userId, openViewPhotoPopup, openConfirmPopup, setLikeCard);
         galleryCardList.prepend(cardElement);
         closePopup(popupAddPhoto);
       })
