@@ -84,7 +84,7 @@ export const putLike = cardId => fetch(`${config.url}/cards/likes/${cardId}`, {
   if (response.ok) {
     return response.json();
   }
-  return Promise.reject(`Ошибка: ${response.status}. Попробуйте ещё раз.`);
+  return Promise.reject(`Ошибка установки лайка: ${response.status}.`);
 });
 
 export const deleteLike = cardId => fetch(`${config.url}/cards/likes/${cardId}`, {
@@ -94,5 +94,5 @@ export const deleteLike = cardId => fetch(`${config.url}/cards/likes/${cardId}`,
   if (response.ok) {
     return response.json();
   }
-  return Promise.reject(`Ошибка: ${response.status}. Попробуйте ещё раз.`);
+  return Promise.reject(`Ошибка удаления лайка: ${response.status}.`);
 });

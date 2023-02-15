@@ -57,13 +57,13 @@ let cardElementToDelete;
 function openConfirmPopup(cardData, cardElement) {
   cardDataToDelete = cardData;
   cardElementToDelete = cardElement;
-  hideServerError(messageErrorConfirm);
+  hideServerError(messageErrorConfirm, 'popup__error_active');
   openPopup(popupConfirm);
 }
 
 function deleteCardElement() {
   renderLoading(buttonConfirm, true, 'Удаление...');
-  hideServerError(messageErrorConfirm);
+  hideServerError(messageErrorConfirm, 'popup__error_active');
   deleteCard(cardDataToDelete._id)
       .then(() => {
         cardElementToDelete.remove();
@@ -71,7 +71,7 @@ function deleteCardElement() {
       })
       .catch(error => {
         console.log(error);
-        showServerError(messageErrorConfirm, error);
+        showServerError(messageErrorConfirm, 'popup__error_active', error);
       })
       .finally(() => renderLoading(buttonConfirm, false, 'Да'));
 }
@@ -80,18 +80,32 @@ buttonConfirm.addEventListener('click', deleteCardElement);
 
 // установка лайков в карточке
 function setLikeCard(cardData, cardElement, status) {
-  status ?
-      deleteLike(cardData._id)
-          .then((card) => {
-            toggleLike(cardElement, card.likes);
-          })
-          .catch(error => console.log(error))
-      :
-      putLike(cardData._id)
-          .then((card) => {
-            toggleLike(cardElement, card.likes);
-          })
-          .catch(error => console.log(error));
+  const messageErrorLike = cardElement.querySelector('.card__error-like');
+  if (status) {
+    deleteLike(cardData._id)
+        .then((card) => {
+          toggleLike(cardElement, card.likes);
+        })
+        .catch(error => {
+          console.log(error);
+          showServerError(messageErrorLike, 'card__error-like_active', error);
+        })
+        .finally(() => {
+          setTimeout(() => hideServerError(messageErrorLike, 'card__error-like_active'), 1500);
+        })
+  } else {
+    putLike(cardData._id)
+        .then((card) => {
+          toggleLike(cardElement, card.likes);
+        })
+        .catch(error => {
+          console.log(error);
+          showServerError(messageErrorLike, 'card__error-like_active', error);
+        })
+        .finally(() => {
+          setTimeout(() => hideServerError(messageErrorLike, 'card__error-like_active'), 1500);
+        })
+  }
 }
 
 // загрузка данных пользователя
@@ -123,7 +137,7 @@ function openProfilePopup() {
   profileNameInput.value = profileNameElement.textContent;
   profileDescriptionInput.value = profileDescriptionElement.textContent;
   clearErrorsOfForm(formSaveProfile, configSelectorForm);
-  hideServerError(messageErrorProfile);
+  hideServerError(messageErrorProfile, 'popup__error_active');
   toggleButtonState(buttonSaveProfile, false, configSelectorForm);
   openPopup(popupProfile);
 }
@@ -139,7 +153,7 @@ function setProfileDescription(description) {
 function saveProfile(event) {
   event.preventDefault();
   renderSaveLoading(buttonSaveProfile, true);
-  hideServerError(messageErrorProfile);
+  hideServerError(messageErrorProfile, 'popup__error_active');
   updateProfile(profileNameInput.value, profileDescriptionInput.value)
       .then(profile => {
         setProfileName(profile.name);
@@ -148,7 +162,7 @@ function saveProfile(event) {
       })
       .catch(error => {
         console.log(error);
-        showServerError(messageErrorProfile, error);
+        showServerError(messageErrorProfile, 'popup__error_active', error);
       })
       .finally(() => {
         renderSaveLoading(buttonSaveProfile, false);
@@ -159,7 +173,7 @@ function saveProfile(event) {
 function openEditAvatarPopup() {
   formUpdateAvatar.reset();
   clearErrorsOfForm(formUpdateAvatar, configSelectorForm);
-  hideServerError(messageErrorAvatar);
+  hideServerError(messageErrorAvatar, 'popup__error_active');
   toggleButtonState(buttonSaveAvatar, false, configSelectorForm);
   openPopup(popupAvatar);
 }
@@ -171,7 +185,7 @@ function setAvatar(url) {
 function saveAvatar(event) {
   event.preventDefault();
   renderSaveLoading(buttonSaveAvatar, true);
-  hideServerError(messageErrorAvatar);
+  hideServerError(messageErrorAvatar, 'popup__error_active');
   updateAvatar(avatarUrlInput.value)
       .then(avatar => {
         setAvatar(avatar.avatar);
@@ -179,7 +193,7 @@ function saveAvatar(event) {
       })
       .catch(error => {
         console.log(error);
-        showServerError(messageErrorAvatar, error);
+        showServerError(messageErrorAvatar, 'popup__error_active', error);
       })
       .finally(() => {
         renderSaveLoading(buttonSaveAvatar, false);
@@ -190,7 +204,7 @@ function saveAvatar(event) {
 function openAddPhotoPopup() {
   formAddPhoto.reset();
   clearErrorsOfForm(formAddPhoto, configSelectorForm);
-  hideServerError(messageErrorPhoto);
+  hideServerError(messageErrorPhoto, 'popup__error_active');
   toggleButtonState(buttonSavePhoto, false, configSelectorForm);
   openPopup(popupAddPhoto);
 }
@@ -198,7 +212,7 @@ function openAddPhotoPopup() {
 function addPhotoPopup(event) {
   event.preventDefault();
   renderSaveLoading(buttonSavePhoto, true);
-  hideServerError(messageErrorPhoto);
+  hideServerError(messageErrorPhoto, 'popup__error_active');
   addCard(photoNameInput.value, photoUrlInput.value)
       .then(card => {
         const cardElement = createCardElement(card, userId, openViewPhotoPopup, openConfirmPopup, setLikeCard);
@@ -207,7 +221,7 @@ function addPhotoPopup(event) {
       })
       .catch(error => {
         console.log(error);
-        showServerError(messageErrorPhoto, error);
+        showServerError(messageErrorPhoto, 'popup__error_active', error);
       })
       .finally(() => {
         renderSaveLoading(buttonSavePhoto, false);

@@ -11,13 +11,6 @@ function checkCardIsLiked(card, userId) {
   })
 }
 
-export function toggleLike(cardElement, likes) {
-  const buttonLikeCard = cardElement.querySelector('.card__btn-like');
-  const counterLikesCard = cardElement.querySelector('.card__like-counter');
-  buttonLikeCard.classList.toggle('card__btn-like_active');
-  counterLikesCard.textContent = likes.length;
-}
-
 // формирование элемента карточки в DOM
 export function createCardElement(cardData, userId, callbackOpenViewer, callbackOpenConfirm, callbackSetLike) {
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
@@ -57,4 +50,11 @@ export function createCardElement(cardData, userId, callbackOpenViewer, callback
   });
 
   return cardElement;
+}
+
+export function toggleLike(cardElement, likes) {
+  const buttonLikeCard = cardElement.querySelector('.card__btn-like');
+  const counterLikesCard = cardElement.querySelector('.card__like-counter');
+  buttonLikeCard.classList.toggle('card__btn-like_active');
+  counterLikesCard.textContent = likes.length;
 }

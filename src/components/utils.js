@@ -72,20 +72,20 @@ export function renderSaveLoading(button, isLoading) {
 }
 
 // функции показа ошибок сервера
-export function showServerError(message, error) {
-  message.classList.add('popup__error_active');
-  message.textContent = error;
-}
-
-export function hideServerError(message) {
-  message.classList.remove('popup__error_active');
-  message.textContent = '';
-}
-
 export function showDataLoadingError (error) {
   content.classList.add('content_inactive');
   const contentLoadingError= document.createElement('section');
   contentLoadingError.classList.add('content__error');
   contentLoadingError.textContent = error;
   content.prepend(contentLoadingError);
+}
+
+export function showServerError(message, element, error) {
+  message.classList.add(element);
+  message.textContent = error;
+}
+
+export function hideServerError(message, element) {
+  message.classList.remove(element);
+  message.textContent = '';
 }
