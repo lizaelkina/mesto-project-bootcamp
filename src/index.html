@@ -14,11 +14,11 @@
     <section class="profile content__profile" aria-label="Профиль пользователя">
       <button class="profile__avatar-btn-add" type="button"
               aria-label="Редактировать аватар профиля">
-        <img class="profile__avatar" src="" alt="Аватар профиля">
+        <img class="profile__avatar" src="#" alt="Аватар профиля">
         <span class="loader loader_type_avatar loader_visible"></span>
       </button>
       <div class="profile__info">
-        <h1 class="profile__title"></h1>
+        <h2 class="profile__title"></h2>
         <button class="profile__btn-edit" type="button"
                 aria-label="Редактировать профиль"></button>
         <p class="profile__subtitle"></p>
@@ -30,7 +30,7 @@
       <ul class="gallery__cards"></ul>
     </section>
   </main>
-  <footer class="footer page__footer">&copy; 2023 Mesto Russia</footer>
+  <footer class="page__footer"><h1 class="footer">&copy; 2023 Mesto Russia</h1></footer>
   <template id="card-item-template">
     <li class="card">
       <img class="card__photo" src="#" alt="#">
@@ -38,7 +38,7 @@
       <button class="card__btn-delete" type="button"
               aria-label="Удалить изображение"></button>
       <div class="card__caption">
-        <h2 class="card__text"></h2>
+        <h3 class="card__text"></h3>
         <button class="card__btn-like" type="button" aria-label="Поставить like"></button>
         <div class="card__like-counter"></div>
         <span class="card__error-like"></span>
@@ -48,7 +48,7 @@
   <div class="popup popup_type_edit-profile">
     <div class="popup__container popup__container_dialog">
       <button class="popup__btn-close" aria-label="Закрыть окно"></button>
-      <h3 class="popup__title">Редактировать профиль</h3>
+      <h4 class="popup__title">Редактировать профиль</h4>
       <span class="popup__error"></span>
       <form class="form" name="edit-profile" novalidate>
         <input class="form__input form__input_type_profile-name" id="profile-name" type="text"
@@ -65,7 +65,7 @@
   <div class="popup popup_type_add-photo">
     <div class="popup__container popup__container_dialog">
       <button class="popup__btn-close" aria-label="Закрыть окно"></button>
-      <h3 class="popup__title">Новое место</h3>
+      <h4 class="popup__title">Новое место</h4>
       <span class="popup__error"></span>
       <form class="form" name="add-photo" novalidate>
         <input class="form__input form__input_type_photo-name" type="text" id="photo-name"
@@ -90,7 +90,7 @@
   <div class="popup popup_type_update-avatar">
     <div class="popup__container popup__container_dialog">
       <button class="popup__btn-close" aria-label="Закрыть окно"></button>
-      <h3 class="popup__title">Обновить аватар</h3>
+      <h4 class="popup__title">Обновить аватар</h4>
       <span class="popup__error"></span>
       <form class="form" name="update-avatar" novalidate>
         <input class="form__input form__input_type_avatar-url" type="url" id="avatar-url"
@@ -103,7 +103,7 @@
   <div class="popup popup_type_confirm">
     <div class="popup__container popup__container_dialog">
       <button class="popup__btn-close" aria-label="Закрыть окно"></button>
-      <h3 class="popup__title">Вы уверены?</h3>
+      <h4 class="popup__title">Вы уверены?</h4>
       <span class="popup__error"></span>
       <button class="popup__btn popup__btn_type_confirm" type="button">Да</button>
     </div>
