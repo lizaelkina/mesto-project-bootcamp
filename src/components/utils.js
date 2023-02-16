@@ -21,7 +21,7 @@ export const formUpdateAvatar = popupAvatar.querySelector('.form');
 export const avatarUrlInput = popupAvatar.querySelector('.form__input_type_avatar-url');
 export const buttonSaveAvatar = popupAvatar.querySelector('.popup__btn_type_form');
 export const messageErrorAvatar = popupAvatar.querySelector('.popup__error');
-export const loaderAvatar = buttonEditAvatar.querySelector('.loader');
+export const loaderAvatar = buttonEditAvatar.querySelector('.loader_type_avatar');
 
 // загрузка карточки
 export const popupAddPhoto = page.querySelector('.popup_type_add-photo');
@@ -54,7 +54,7 @@ export const configSelectorForm = {
   inactiveButtonClass: 'popup__btn_disabled'
 }
 
-// функция отслеживания состояния загрузки
+// функции отслеживания состояния загрузки
 export function renderLoading(button, isLoading, text) {
   button.textContent = text;
   if (isLoading) {
@@ -70,6 +70,10 @@ export function renderSaveLoading(button, isLoading) {
   } else {
     renderLoading(button, isLoading, 'Сохранить');
   }
+}
+
+export function renderLoadingImage(element) {
+  element.classList.add('loader_visible');
 }
 
 // функции показа ошибок сервера

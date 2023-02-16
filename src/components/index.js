@@ -35,6 +35,7 @@ import {
   profileNameElement,
   profileNameInput,
   renderLoading,
+  renderLoadingImage,
   renderSaveLoading,
   showDataLoadingError,
   showServerError
@@ -179,10 +180,6 @@ function openEditAvatarPopup() {
   openPopup(popupAvatar);
 }
 
-function renderLoadingImage() {
-  loaderAvatar.classList.add('loader_visible');
-}
-
 function setAvatar(url) {
   avatarImage.onload = () => loaderAvatar.classList.remove('loader_visible');
   avatarImage.src = url;
@@ -192,7 +189,7 @@ function saveAvatar(event) {
   event.preventDefault();
   renderSaveLoading(buttonSaveAvatar, true);
   hideServerError(messageErrorAvatar, 'popup__error_active');
-  renderLoadingImage();
+  renderLoadingImage(loaderAvatar);
   updateAvatar(avatarUrlInput.value)
       .then(avatar => {
         setAvatar(avatar.avatar);
