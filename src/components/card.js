@@ -20,6 +20,8 @@ export function createCardElement(cardData, userId, callbackOpenViewer, callback
   const buttonLikeCard = cardElement.querySelector('.card__btn-like');
   const counterLikesCard = cardElement.querySelector('.card__like-counter');
   const buttonDeleteCard = cardElement.querySelector('.card__btn-delete');
+  const loaderPhoto = cardElement.querySelector('.loader_type_card');
+  cardImage.onload = () => loaderPhoto.classList.remove('loader_visible');
   cardImage.src = cardData.link;
   cardImage.setAttribute('alt', cardData.name);
   cardTextElement.textContent = cardData.name;
