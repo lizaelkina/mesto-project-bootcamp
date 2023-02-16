@@ -1,0 +1,6 @@
+.loader_type_card {
+  top: 127px;
+  left: 127px;
+  border: 5px solid var(--loader_card-color-background);
+  border-top-color: var(--loader_card-color);
+}

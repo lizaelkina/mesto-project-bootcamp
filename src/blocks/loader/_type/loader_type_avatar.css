@@ -1,0 +1,6 @@
+.loader_type_avatar {
+  top: 45px;
+  left: 45px;
+  border: 5px solid var(--loader_avatar-color-background);
+  border-top: 5px solid var(--loader_avatar-color);
+}
