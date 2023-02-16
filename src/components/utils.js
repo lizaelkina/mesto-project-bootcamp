@@ -21,6 +21,7 @@ export const formUpdateAvatar = popupAvatar.querySelector('.form');
 export const avatarUrlInput = popupAvatar.querySelector('.form__input_type_avatar-url');
 export const buttonSaveAvatar = popupAvatar.querySelector('.popup__btn_type_form');
 export const messageErrorAvatar = popupAvatar.querySelector('.popup__error');
+export const loaderAvatar = buttonEditAvatar.querySelector('.loader');
 
 // загрузка карточки
 export const popupAddPhoto = page.querySelector('.popup_type_add-photo');
