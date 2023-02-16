@@ -6,4 +6,6 @@
   --text-element: #000;
   --text-footer: #545;
   --text-error: #ff0000;
+  --loader-color-background: #545;
+  --loader-color: #fff;
 }
