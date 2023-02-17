@@ -1,4 +1,4 @@
-import {cardTemplate} from './utils';
+import {addBrokenImage, addLoadingImage, cardTemplate, removeLoadingImage} from './utils';
 
 // проверки на владельца и на лайки
 function checkCardIsMy(card, userId) {
@@ -21,7 +21,9 @@ export function createCardElement(cardData, userId, callbackOpenViewer, callback
   const counterLikesCard = cardElement.querySelector('.card__like-counter');
   const buttonDeleteCard = cardElement.querySelector('.card__btn-delete');
   const loaderPhoto = cardElement.querySelector('.loader_type_card');
-  cardImage.onload = () => loaderPhoto.classList.remove('loader_visible');
+  cardImage.onload = () => removeLoadingImage(loaderPhoto);
+  cardImage.onerror = () => addBrokenImage(cardImage);
+  addLoadingImage(cardImage);
   cardImage.src = cardData.link;
   cardImage.setAttribute('alt', cardData.name);
   cardTextElement.textContent = cardData.name;

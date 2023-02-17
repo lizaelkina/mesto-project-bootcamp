@@ -35,10 +35,10 @@ import {
   profileNameElement,
   profileNameInput,
   renderLoading,
-  renderLoadingImage,
+  addLoadingImage,
   renderSaveLoading,
   showDataLoadingError,
-  showServerError
+  showServerError, removeLoadingImage, addBrokenImage
 } from './utils';
 import {closePopup, openPopup,} from './modal';
 import {createCardElement, toggleLike} from './card';
@@ -181,7 +181,9 @@ function openEditAvatarPopup() {
 }
 
 function setAvatar(url) {
-  avatarImage.onload = () => loaderAvatar.classList.remove('loader_visible');
+  avatarImage.onload = () => removeLoadingImage(loaderAvatar);
+  avatarImage.onerror = () => addBrokenImage(avatarImage);
+  addLoadingImage(loaderAvatar);
   avatarImage.src = url;
 }
 
@@ -189,11 +191,10 @@ function saveAvatar(event) {
   event.preventDefault();
   renderSaveLoading(buttonSaveAvatar, true);
   hideServerError(messageErrorAvatar, 'popup__error_active');
-  renderLoadingImage(loaderAvatar);
   updateAvatar(avatarUrlInput.value)
       .then(avatar => {
-        setAvatar(avatar.avatar);
         closePopup(popupAvatar);
+        setAvatar(avatar.avatar);
       })
       .catch(error => {
         console.log(error);

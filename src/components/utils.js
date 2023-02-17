@@ -54,6 +54,9 @@ export const configSelectorForm = {
   inactiveButtonClass: 'popup__btn_disabled'
 }
 
+//картинка при ошибке загрузки изображения
+import brokenImageUrl from '../images/image_not-found.webp';
+
 // функции отслеживания состояния загрузки
 export function renderLoading(button, isLoading, text) {
   button.textContent = text;
@@ -72,8 +75,16 @@ export function renderSaveLoading(button, isLoading) {
   }
 }
 
-export function renderLoadingImage(element) {
+export function addLoadingImage(element) {
   element.classList.add('loader_visible');
+}
+
+export function removeLoadingImage(element) {
+  element.classList.remove('loader_visible');
+}
+
+export function addBrokenImage(image) {
+  image.src = brokenImageUrl;
 }
 
 // функции показа ошибок сервера
