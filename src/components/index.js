@@ -41,7 +41,7 @@ import {
   showServerError, removeLoadingImage, addBrokenImage
 } from './utils';
 import {closePopup, openPopup,} from './modal';
-import {createCardElement, toggleLike} from './card';
+import {checkCardIsMy, createCardElement, toggleLike} from './card';
 import {clearErrorsOfForm, enableValidation, toggleButtonState} from './validate';
 
 // просмотр полного изображения карточки
@@ -123,7 +123,7 @@ function loadUserProfile() {
         setProfileDescription(userInfo.about);
 
         const cards = results[1];
-        cards.forEach(card => {
+        cards.filter(card => checkCardIsMy(card, userId)).forEach(card => {
           const cardElement = createCardElement(card, userId, openViewPhotoPopup, openConfirmPopup, setLikeCard);
           galleryCardList.append(cardElement);
         })

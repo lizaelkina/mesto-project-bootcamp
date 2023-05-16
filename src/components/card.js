@@ -1,7 +1,7 @@
 import {addBrokenImage, addLoadingImage, cardTemplate, removeLoadingImage} from './utils';
 
 // проверки на владельца и на лайки
-function checkCardIsMy(card, userId) {
+export function checkCardIsMy(card, userId) {
   return card.owner._id === userId;
 }
 
