@@ -17,6 +17,6 @@
 
 - WEBPACK
 
-## GitHub Pages
+## Ссылка на проект
 
-- [Ссылка на сайт](https://lizapetkova.github.io/mesto-project-bootcamp/)
+- http://js-mesto.elkacloud.ru/
