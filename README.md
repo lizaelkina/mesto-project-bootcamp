@@ -19,4 +19,4 @@
 
 ## Ссылка на проект
 
-- http://js-mesto.elkacloud.ru/
+- http://js-mesto.elkacloud.ru
