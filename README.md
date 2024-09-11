@@ -19,4 +19,4 @@
 
 ## Ссылка на проект
 
-- http://js-mesto.elkacloud.ru
+- https://lizaelkina.github.io/mesto-project-bootcamp/
