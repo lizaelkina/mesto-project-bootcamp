@@ -83,6 +83,7 @@ export function removeLoadingImage(element) {
   element.classList.remove('loader_visible');
 }
 
+//функция показа заглушки аватара
 export function addBrokenImage(image) {
   image.src = brokenImageUrl;
 }
