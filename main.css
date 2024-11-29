@@ -56,6 +56,6 @@
 .form__error{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;box-sizing:border-box;color:var(--text-error);font-family:var(--font-family);font-size:12px;font-style:normal;font-weight:400;line-height:12px;min-height:30px;padding-top:5px;visibility:hidden}
 .form__error_active{visibility:visible}
 .viewer{display:flex;flex-direction:column;gap:10px;margin:0;padding:0}
-.viewer__photo{max-height:75vh;max-width:75vw;-o-object-fit:contain;object-fit:contain}
+.viewer__photo{max-height:75vh;-o-object-fit:contain;object-fit:contain;width:100%}
 .viewer__caption{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:var(--text-color);font-family:var(--font-family);font-size:12px;font-style:normal;font-weight:400;line-height:15px;margin:0;max-width:80vw;padding:0}
 
